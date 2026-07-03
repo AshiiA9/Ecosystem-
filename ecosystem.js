@@ -25,7 +25,15 @@ let memory : {
   customers: [ ]
 };
 let customer = {
+name: "Johnson City Country Club"
   
 };
+let customer = { 
+  name: "Juan Siao"
+};
+let customer = { 
+  name: "Southern Craft JC"
+};
+
   
   
