@@ -21,3 +21,11 @@ Digital Ecosystem Principles
 
 ==================================================
 */
+let memory : { 
+  customers: [ ]
+};
+let customer = {
+  
+};
+  
+  
