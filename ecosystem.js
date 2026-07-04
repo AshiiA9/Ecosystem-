@@ -73,12 +73,4 @@ function createService ( customer, time, date, serviceType, status, cost) {
   business.addCustomer("Johnson City Country Club", "", "", "");
 business.addCustomer("Juan Siao", "", "", "");
 business.addCustomer("Southern Craft JC", "", "", "");
-business.addService("Johnson City Country Club", "8:00AM", "July 7th 2026", "Bi-Weekly", "Scheduled", "65");
-business.addService("Juan Siao", "8:40AM", "July 7th 2026", "Weekly", "Scheduled", "32.5");
-business.addService("Southern Craft JC", "9:13AM", "July 7th 2026", "Weekly", "Scheduled", "75");
-console.log(memory);
-
-  
-
-  
-  
+business.addService("Johnson City Country Club", "8:00AM", "July 7th 2026", "Bi-Weekly", "Scheduled", "
