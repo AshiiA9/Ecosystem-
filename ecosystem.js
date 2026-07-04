@@ -78,5 +78,13 @@ business.addService("Juan Siao", "8:40AM", "July 7th 2026", "Weekly", "Scheduled
 business.addService("Southern Craft JC", "9:13AM", "July 7th 2026", "Weekly", "Scheduled", 75);
 
  let serviceList = document.getElementById("serviceList");
-serviceList.innerHTML = (memory.services.firstService.customer);
+serviceList.innerHTML = "";
+for (let service of memory.services) {
+  scheduleList.innerHTML +=
+    service.customer +
+    " - " + 
+    service.serviceType +
+    "<br>";
+
+
 
