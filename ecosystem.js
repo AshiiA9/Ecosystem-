@@ -35,7 +35,21 @@ function createCustomer (name, phone, address, email) {
   let business = {
   name: "Transition Mode",
   mode: "Transition", 
-    disabled: 
+
+    capabilities: {
+      customerContact: false,
+      liveScheduling: false,
+      invoicing: false, 
+      paymentProcessing: false,
+      onlineBooking: false, 
+
+      dataCollection: true,
+      reporting: true,
+      knowledgeEngine: true
+    },
+    addCustomer(name, phone, address, email) {
+    }
+  };
 
   addCustomer(name, phone, address, email) {
     let newCustomer = createCustomer(name, phone, address, email);
