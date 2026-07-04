@@ -31,15 +31,20 @@ function createCustomer (name, phone, address, email) {
     address: address,
     email: email,
   };
-}
-let customer1 = createCustomer("Johnson City Country Club", " ", " ", " ");
-let customer2 = createCustomer("Juan Siao", " ", " ", " ");
-let customer3 = createCustomer("Southern Craft JC", " ", " ", " ");
+  let business = {
+  name: "Transition Mode",
 
-memory.customers.push(customer1);
-memory.customers.push(customer2);
-memory.customers.push(customer3);
+  addCustomer(name, phone, address, email) {
+    let newCustomer = createCustomer(name, phone, address, email);
+    memory.customers.push(newCustomer);
+  }
+};
+  business.addCustomer("Johnson City Country Club", "", "", "");
+business.addCustomer("Juan Siao", "", "", "");
+business.addCustomer("Southern Craft JC", "", "", "");
+
 console.log(memory);
+
   
 
   
