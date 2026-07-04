@@ -23,6 +23,8 @@ Digital Ecosystem Principles
 */
 let memory = { 
   customers: [ ]
+  services: [ ]
+  
 };
 function createCustomer (name, phone, address, email) {
   return {
