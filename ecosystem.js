@@ -73,7 +73,7 @@ function createService ( customer, time, date, serviceType, status, cost) {
   business.addCustomer("Johnson City Country Club", "", "", "");
 business.addCustomer("Juan Siao", "", "", "");
 business.addCustomer("Southern Craft JC", "", "", "");
-
+business.addService("Johnson City Country Club", "8:00AM", "July 7th, 2026", "Bi-Weekly", "scheduled", "$65.00");
 console.log(memory);
 
   
