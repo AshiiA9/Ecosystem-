@@ -51,11 +51,6 @@ function createCustomer (name, phone, address, email) {
     }
   };
 
-  addCustomer(name, phone, address, email) {
-    let newCustomer = createCustomer(name, phone, address, email);
-    memory.customers.push(newCustomer);
-  }
-};
   business.addCustomer("Johnson City Country Club", "", "", "");
 business.addCustomer("Juan Siao", "", "", "");
 business.addCustomer("Southern Craft JC", "", "", "");
