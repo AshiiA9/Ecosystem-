@@ -21,19 +21,26 @@ Digital Ecosystem Principles
 
 ==================================================
 */
-let memory : { 
+let memory = { 
   customers: [ ]
 };
-let customer = {
-name: "Johnson City Country Club"
+function createCustomer (name, phone, address, email) {
+  return {
+    name: name, 
+    phone: phone,
+    address: address,
+    email: email,
+  };
+}
+let customer1 = createCustomer("Johnson City Country Club", " ", " ", " ");
+let customer2 = createCustomer("Juan Siao", " ", " ", " ");
+let customer3 = createCustomer("Southern Craft JC", " ", " ", " ");
+
+memory.customers.push(customer1);
+memory.customers.push(customer2);
+memory.customers.push(customer3);
+console.log(memory);
   
-};
-let customer = { 
-  name: "Juan Siao"
-};
-let customer = { 
-  name: "Southern Craft JC"
-};
 
   
   
