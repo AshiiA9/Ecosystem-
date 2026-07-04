@@ -29,7 +29,8 @@ function createCustomer (name, phone, address, email) {
     name: name, 
     phone: phone,
     address: address,
-    email: email,}
+    email: email
+  }
   };
   let business = {
   name: "Transition Mode",
