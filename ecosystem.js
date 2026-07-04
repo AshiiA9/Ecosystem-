@@ -34,6 +34,16 @@ function createCustomer (name, phone, address, email) {
     email: email
   }
   };
+function createService ( customer, time, date, serviceType, cost) {
+  return  {
+    customer: customer,
+    time: time,
+    date: date,
+    serviceType: serviceType,
+    cost: cost
+  }
+};
+    
   let business = {
   name: "Transition Mode",
   mode: "Transition", 
