@@ -80,11 +80,13 @@ business.addService("Southern Craft JC", "9:13AM", "July 7th 2026", "Weekly", "S
  let serviceList = document.getElementById("serviceList");
 serviceList.innerHTML = "";
 for (let service of memory.services) {
-  scheduleList.innerHTML +=
+  serviceList.innerHTML +=
     service.customer +
     " - " + 
     service.serviceType +
     "<br>";
+}
+
 
 
 
