@@ -77,4 +77,5 @@ business.addService("Johnson City Country Club", "8:00AM", "July 7th 2026", "Bi-
 business.addService("Juan Siao", "8:40AM", "July 7th 2026", "Weekly", "Scheduled", 32.5);
 business.addService("Southern Craft JC", "9:13AM", "July 7th 2026", "Weekly", "Scheduled", 75);
 
- let serviceList = document.serviceList
+ let serviceList = document.getElementById("serviceList");
+
