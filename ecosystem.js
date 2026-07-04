@@ -84,6 +84,7 @@ for (let service of memory.services) {
     service.customer +
     " - " + 
     service.serviceType +
+    service.status +
     "<br>";
 }
 
