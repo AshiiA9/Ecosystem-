@@ -63,7 +63,7 @@ function createService ( customer, time, date, serviceType, status, cost) {
     addCustomer(name, phone, address, email) {
       let newCustomer = createCustomer(name, phone, address, email);
       memory.customers.push(newCustomer);
-    }
+    },
     addService(customer, time, date, serviceType, status, cost) {
     let newService = createService(customer, time, date, serviceType, status, cost);
     memory.services.push(newService);
