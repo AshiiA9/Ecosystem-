@@ -22,7 +22,7 @@ Digital Ecosystem Principles
 ==================================================
 */
 let memory = { 
-  customers: [ ]
+  customers: [ ],
   services: [ ]
   
 };
