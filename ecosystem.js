@@ -48,7 +48,7 @@ function createCustomer (name, phone, address, email) {
       knowledgeEngine: true
     },
     addCustomer(name, phone, address, email) {
-      let newCustomer = createCustomer(name, phone, email, address);
+      let newCustomer = createCustomer(name, phone, address, email);
       memory.customers.push(newCustomer);
     }
    };
