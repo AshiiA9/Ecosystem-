@@ -34,14 +34,14 @@ function createCustomer (name, phone, address, email) {
     email: email
   }
   };
-function createService ( customer, time, date, serviceType, cost, status) {
+function createService ( customer, time, date, serviceType, status, cost) {
   return  {
     customer: customer,
     time: time,
     date: date,
     serviceType: serviceType,
-    cost: cost,
-    status: status
+    status: status,
+    cost: cost
   }
 };
     
