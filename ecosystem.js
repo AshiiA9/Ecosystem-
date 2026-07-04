@@ -48,8 +48,10 @@ function createCustomer (name, phone, address, email) {
       knowledgeEngine: true
     },
     addCustomer(name, phone, address, email) {
+      let newCustomer = createCustomer(name, phone, email, address);
+      memory.customers.push(newCustomer);
     }
-  };
+   };
 
   business.addCustomer("Johnson City Country Club", "", "", "");
 business.addCustomer("Juan Siao", "", "", "");
