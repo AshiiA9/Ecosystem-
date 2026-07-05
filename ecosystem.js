@@ -83,7 +83,8 @@ function createService ( customer, time, date, serviceType, status, cost) {
       return memory.services[0];
     },
     findLongestService() {
-      
+      return memory.services[];
+    }
    };
 
   business.addCustomer("Johnson City Country Club", "", "", "");
