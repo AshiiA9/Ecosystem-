@@ -74,7 +74,7 @@ function createService ( customer, time, date, serviceType, status, cost) {
     calculateProjectedRevenue( ) {
       let total = 0;
       for (let service of memory.services) {
-        total += service.cost;
+        total += services.cost;
       }
         return total;
       },
