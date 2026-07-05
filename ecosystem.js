@@ -86,7 +86,7 @@ for (let service of memory.services) {
      "<strong>" + service.customer + "</strong><br>" +
     service.time + "•" + service.date + "<br>" +
     service.serviceType + "•" + service.status + "• $" + service.cost +
-    "</div>"
+    "</div>";
 
 
 
