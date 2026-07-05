@@ -133,7 +133,7 @@ serviceList.innerHTML +=
   nextService.time +
   "</strong>";
 
-let longestService = business.findLongestService(),
+let longestService = business.findLongestService();
 
 
 
