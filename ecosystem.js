@@ -104,10 +104,11 @@ serviceList.innerHTML +=
   "<br><strong>Total Services: " +
   business.countScheduledServices() +
   "<strong>";
+
 serviceList.innerHTML +=
   "<br><strong>Projcted Revenue: $" +
   business.calculatedProjectedRevenue( ) +
-  "</strong>"
+  "</strong>";
 
 
 
