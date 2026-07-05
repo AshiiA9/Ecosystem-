@@ -69,7 +69,7 @@ function createService ( customer, time, date, serviceType, status, cost) {
     memory.services.push(newService);
     },
     countScheduledServices( ) {
-      return memory.service.length;
+      return memory.services.length;
     }
     
    };
