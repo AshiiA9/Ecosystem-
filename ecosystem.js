@@ -93,6 +93,10 @@ for (let service of memory.services) {
     service.serviceType + " • " + service.status + " • $" + service.cost +
     "</div>";
 }
+serviceList.innerHTML +=
+  "<br><strong>Total Services: " +
+  business.countScheduledServices() +
+  "<strong>";
 
 
 
