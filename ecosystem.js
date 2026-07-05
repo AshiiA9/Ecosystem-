@@ -93,6 +93,18 @@ function createService ( customer, time, date, serviceType, status, cost, durati
 
   return longestService;
    }
+
+    findHighestRevenueService() {
+  let highestService = memory.services[0];
+
+  for (let service of memory.services) {
+    if (service.cost > highestService.cost) {
+      highestService = service;
+    }
+  }
+
+  return highestService;
+}
   };
 
   business.addCustomer("Johnson City Country Club", "", "", "");
