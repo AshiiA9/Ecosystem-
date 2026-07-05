@@ -111,6 +111,9 @@ serviceList.innerHTML +=
   "<br><strong>Projected Revenue: $" +
   business.calculateProjectedRevenue() +
   "</strong>";
+
+let nextService = business.findNextService();
+
 serviceList.innerHTML +=
   "<br><strong>Next Service: " +
   nextService.customer +
