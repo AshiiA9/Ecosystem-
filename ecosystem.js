@@ -34,7 +34,7 @@ function createCustomer (name, phone, address, email) {
     email: email
   }
   };
-function createService ( customer, time, date, serviceType, status, cost) {
+function createService ( customer, time, date, serviceType, status, cost, duration) {
   return  {
     customer: customer,
     time: time,
@@ -92,8 +92,7 @@ function createService ( customer, time, date, serviceType, status, cost) {
   }
 
   return longestService;
-}
-    }
+   }
    };
 
   business.addCustomer("Johnson City Country Club", "", "", "");
@@ -134,7 +133,7 @@ serviceList.innerHTML +=
   nextService.time +
   "</strong>";
 
-let longestService = memory.services[0];
+let longestService = business.findLongestService(),
 
 
 
