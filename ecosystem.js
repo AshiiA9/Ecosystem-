@@ -106,8 +106,8 @@ serviceList.innerHTML +=
   "<strong>";
 
 serviceList.innerHTML +=
-  "<br><strong>Projcted Revenue: $" +
-  business.calculatedProjectedRevenue() +
+  "<br><strong>Projected Revenue: $" +
+  business.calculateProjectedRevenue() +
   "</strong>";
 
 
