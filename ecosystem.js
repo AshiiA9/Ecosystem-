@@ -67,6 +67,7 @@ function createService ( customer, time, date, serviceType, status, cost) {
     addService(customer, time, date, serviceType, status, cost) {
     let newService = createService(customer, time, date, serviceType, status, cost);
     memory.services.push(newService);
+    }
     
    };
 
