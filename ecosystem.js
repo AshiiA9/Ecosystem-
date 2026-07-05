@@ -93,7 +93,7 @@ function createService ( customer, time, date, serviceType, status, cost, durati
 
   return longestService;
    }
-   };
+  };
 
   business.addCustomer("Johnson City Country Club", "", "", "");
 business.addCustomer("Juan Siao", "", "", "");
