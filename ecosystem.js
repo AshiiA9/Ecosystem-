@@ -116,6 +116,7 @@ function createService ( customer, time, date, serviceType, status, cost, durati
 
     return lowestService;
 }
+  };
  function askPie() {
   let question = document.getElementById("pieInput").value.toLowerCase();
   let responseBox = document.getElementById("pieResponse");
