@@ -41,7 +41,8 @@ function createService ( customer, time, date, serviceType, status, cost) {
     date: date,
     serviceType: serviceType,
     status: status,
-    cost: cost
+    cost: cost,
+    duration: duration
   }
 };
     
@@ -80,15 +81,17 @@ function createService ( customer, time, date, serviceType, status, cost) {
       },
     findNextService() {
       return memory.services[0];
-    }
+    },
+    findLongestService() {
+      
    };
 
   business.addCustomer("Johnson City Country Club", "", "", "");
 business.addCustomer("Juan Siao", "", "", "");
 business.addCustomer("Southern Craft JC", "", "", "");
-business.addService("Johnson City Country Club", "8:00AM", "July 7th 2026", "Bi-Weekly", "Scheduled", 65);
-business.addService("Juan Siao", "8:40AM", "July 7th 2026", "Weekly", "Scheduled", 32.5);
-business.addService("Southern Craft JC", "9:13AM", "July 7th 2026", "Weekly", "Scheduled", 75);
+business.addService("Johnson City Country Club", "8:00AM", "July 7th 2026", "Bi-Weekly", "Scheduled", 65, 30);
+business.addService("Juan Siao", "8:40AM", "July 7th 2026", "Weekly", "Scheduled", 32.5, 30);
+business.addService("Southern Craft JC", "9:13AM", "July 7th 2026", "Weekly", "Scheduled", 75, 30);
 
                               
  let serviceList = document.getElementById("serviceList");
@@ -120,6 +123,8 @@ serviceList.innerHTML +=
   " at " + 
   nextService.time +
   "</strong>";
+
+let longestService = memory.services[0];
 
 
 
