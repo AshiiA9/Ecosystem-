@@ -174,7 +174,7 @@ serviceList.innerHTML +=
  highestService.cost + 
   "</strong>";
 
-let lowestServic = business.findLowestRevenueService();
+let lowestService = business.findLowestRevenueService();
 
 serviceList.innerHTML +=
   "<br><strong>Lowest Revenue Service: " +
