@@ -135,6 +135,13 @@ serviceList.innerHTML +=
 
 let longestService = business.findLongestService();
 
+serviceList.innerHTML +=
+  "<br><strong>Longest Service: " +
+  longestService.customer +
+  " - " +
+  longestService.duration +
+  "minutes</strong>";
+
 
 
 
