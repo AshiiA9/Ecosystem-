@@ -154,6 +154,13 @@ serviceList.innerHTML +=
   longestService.duration +
   "minutes</strong>";
 
+serviceList.innerHTML +=
+  "<br><strong>Highest Revenue Service: " +
+  highestService.customer +
+  " - " +
+  " $" +
+ highestService.highestService +
+  "</strong>";
 
 
 
