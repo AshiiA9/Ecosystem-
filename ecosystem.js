@@ -65,8 +65,8 @@ function createService ( customer, time, date, serviceType, status, cost) {
       let newCustomer = createCustomer(name, phone, address, email);
       memory.customers.push(newCustomer);
     },
-    addService(customer, time, date, serviceType, status, cost) {
-    let newService = createService(customer, time, date, serviceType, status, cost);
+    addService(customer, time, date, serviceType, status, cost, duration) {
+    let newService = createService(customer, time, date, serviceType, status, cost, duration);
     memory.services.push(newService);
     },
     countScheduledServices( ) {
@@ -83,7 +83,16 @@ function createService ( customer, time, date, serviceType, status, cost) {
       return memory.services[0];
     },
     findLongestService() {
-      return memory.services[];
+  let longestService = memory.services[0];
+
+  for (let service of memory.services) {
+    if (service.duration > longestService.duration) {
+      longestService = service;
+    }
+  }
+
+  return longestService;
+}
     }
    };
 
