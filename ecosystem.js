@@ -113,7 +113,9 @@ serviceList.innerHTML +=
   "</strong>";
 serviceList.innerHTML +=
   "<br><strong>Next Service: " +
-  business.findNextService() +
+  nextService.customer +
+  " at " + 
+  nextService.time +
   "</strong>";
 
 
