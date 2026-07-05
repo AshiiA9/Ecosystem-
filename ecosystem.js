@@ -82,13 +82,11 @@ business.addService("Southern Craft JC", "9:13AM", "July 7th 2026", "Weekly", "S
 serviceList.innerHTML = "";
 for (let service of memory.services) {
   serviceList.innerHTML +=
-    service.customer +
-    " - " + 
-    service.serviceType +
-    " - " +
-    service.status +
-    "<br>";
-}
+    ""<div class='serviceCard'>" +
+     "<strong>" + service.customer + "</strong><br>" +
+    service.time + "•" + service.date + "<br>" +
+    service.serviceType + "•" + service.status + "• $" + service.cost +
+    "</div>
 
 
 
