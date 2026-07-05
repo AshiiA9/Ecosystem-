@@ -84,10 +84,10 @@ for (let service of memory.services) {
   serviceList.innerHTML +=
     "<div class='serviceCard'>" +
      "<strong>" + service.customer + "</strong><br>" +
-    service.time + "•" + service.date + "<br>" +
-    service.serviceType + "•" + service.status + "• $" + service.cost +
-    "</div>"
-};
+    service.time + " • " + service.date + "<br>" +
+    service.serviceType + " • " + service.status + " • $" + service.cost +
+    "</div>";
+}
 
 
 
