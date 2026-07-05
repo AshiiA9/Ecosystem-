@@ -152,16 +152,16 @@ serviceList.innerHTML +=
   longestService.customer +
   " - " +
   longestService.duration +
-  "minutes</strong>";
+  " minutes</strong>";
 
 let highestService = business.findHighestRevenueService();
 
 serviceList.innerHTML +=
   "<br><strong>Highest Revenue Service: " +
   highestService.customer +
-  " - " +
-  " $" +
- highestService.cost"</strong>";
+  " - $" +
+ highestService.cost + 
+  "</strong>";
 
 
 
