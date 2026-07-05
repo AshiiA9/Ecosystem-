@@ -78,6 +78,8 @@ business.addService("Johnson City Country Club", "8:00AM", "July 7th 2026", "Bi-
 business.addService("Juan Siao", "8:40AM", "July 7th 2026", "Weekly", "Scheduled", 32.5);
 business.addService("Southern Craft JC", "9:13AM", "July 7th 2026", "Weekly", "Scheduled", 75);
 
+business.countScheduleServices("Johnson City Country Club", "8:00AM", "July 7th 2026", "Bi-Weekly", "Scheduled", 65);
+                               
  let serviceList = document.getElementById("serviceList");
 
 serviceList.innerHTML = "";
