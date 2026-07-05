@@ -75,7 +75,7 @@ function createService ( customer, time, date, serviceType, status, cost) {
       let total = 0;
       for (let service of memory.services) {
         total += service.cost;
-        )
+      }
         return total;
       },
     
