@@ -159,8 +159,7 @@ serviceList.innerHTML +=
   highestService.customer +
   " - " +
   " $" +
- highestService.highestService +
-  "</strong>";
+ highestService.highestService"</strong>";
 
 
 
