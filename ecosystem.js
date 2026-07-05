@@ -103,7 +103,7 @@ for (let service of memory.services) {
 serviceList.innerHTML +=
   "<br><strong>Total Services: " +
   business.countScheduledServices() +
-  "<strong>";
+  "</strong>";
 
 serviceList.innerHTML +=
   "<br><strong>Projected Revenue: $" +
