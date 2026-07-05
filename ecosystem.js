@@ -92,7 +92,7 @@ function createService ( customer, time, date, serviceType, status, cost, durati
   }
 
   return longestService;
-   }
+   },
 
     findHighestRevenueService() {
   let highestService = memory.services[0];
@@ -161,7 +161,7 @@ serviceList.innerHTML +=
   highestService.customer +
   " - " +
   " $" +
- highestService.highestService"</strong>";
+ highestService.cost"</strong>";
 
 
 
