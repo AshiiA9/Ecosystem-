@@ -78,7 +78,9 @@ function createService ( customer, time, date, serviceType, status, cost) {
       }
         return total;
       },
-    
+    findNextService() {
+      return memory.services[0];
+    }
    };
 
   business.addCustomer("Johnson City Country Club", "", "", "");
@@ -108,6 +110,10 @@ serviceList.innerHTML +=
 serviceList.innerHTML +=
   "<br><strong>Projected Revenue: $" +
   business.calculateProjectedRevenue() +
+  "</strong>";
+serviceList.innerHTML +=
+  "<br><strong>Next Service: " +
+  business.findNextService() +
   "</strong>";
 
 
