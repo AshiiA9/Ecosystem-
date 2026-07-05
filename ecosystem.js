@@ -70,7 +70,12 @@ function createService ( customer, time, date, serviceType, status, cost) {
     },
     countScheduledServices( ) {
       return memory.services.length;
-    }
+    },
+    calculateProjectedRevenue( ) {
+      let total = 0;
+      for (let service of service.cost);
+      
+    },
     
    };
 
