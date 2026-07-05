@@ -108,7 +108,7 @@ function createService ( customer, time, date, serviceType, status, cost, durati
     findLowestRevenueService() {
      let lowestService = memory.services[0];
 
-      for(let service of memory.services) {
+      for (let service of memory.services) {
         if (service.cost < lowestService.cost) {
         lowestService = service;
       }
