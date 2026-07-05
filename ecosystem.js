@@ -104,6 +104,17 @@ function createService ( customer, time, date, serviceType, status, cost, durati
   }
 
   return highestService;
+},
+    findLowestRevenueService() {
+     let lowestService = memory.services[0];
+
+      for(let service of memory.services) {
+        if (service.cost < lowestService.cost) {
+        lowestService = service;
+      }
+    }
+
+    return lowestService;
 }
   };
 
@@ -161,6 +172,14 @@ serviceList.innerHTML +=
   highestService.customer +
   " - $" +
  highestService.cost + 
+  "</strong>";
+let lowestServic = business.findLowestRevenueService();
+
+serviceList.innerHTML +=
+  "<br><strong>Lowest Revenue Service: " +
+  lowestService.customer +
+  " - $" +
+  lowestService.cost +
   "</strong>";
 
 
