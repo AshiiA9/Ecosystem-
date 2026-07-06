@@ -116,7 +116,38 @@ function createService ( customer, time, date, serviceType, status, cost, durati
 
     return lowestService;
 }
+  },
+    function askPie() {
+  let question = document.getElementById("pieInput").value.toLowerCase();
+  let responseBox = document.getElementById("pieResponse");
+
+  if (question.includes("services")) {
+    responseBox.innerHTML =
+      "You have " +
+      business.countScheduledServices() +
+      " scheduled services today.";
+  } else if (question.includes("revenue")) {
+    responseBox.innerHTML = 
+      "Projected revenue is $" +
+      business.calculateProjectedRevenue() +
+      ".";
+  } else if (question.includes("next")) {
+    let nextService = business.findNextService();
+
+    responseBox.innerHTML = 
+      "Your next service is " +
+      nextService.customer +
+      " at " +
+      nextService.time +
+      ".";
+  } else {
+    responseBox.innerHTML =
+      "Pie is awake, but she does not know how to answer that yet.";
+  }
+}
+ 
   };
+
 
   business.addCustomer("Johnson City Country Club", "", "", "");
 business.addCustomer("Juan Siao", "", "", "");
@@ -183,37 +214,7 @@ serviceList.innerHTML +=
   lowestService.cost +
   "</strong>";
 
- function askPie() {
-  let question = document.getElementById("pieInput").value.toLowerCase();
-  let responseBox = document.getElementById("pieResponse");
-
-  if (question.includes("services")) {
-    responseBox.innerHTML =
-      "You have " +
-      business.countScheduledServices() +
-      " scheduled services today.";
-  } else if (question.includes("revenue")) {
-    responseBox.innerHTML = 
-      "Projected revenue is $" +
-      business.calculateProjectedRevenue() +
-      ".";
-  } else if (question.includes("next")) {
-    let nextService = business.findNextService();
-
-    responseBox.innerHTML = 
-      "Your next service is " +
-      nextService.customer +
-      " at " +
-      nextService.time +
-      ".";
-  } else {
-    responseBox.innerHTML =
-      "Pie is awake, but she does not know how to answer that yet.";
-  }
-}
  
-  };
-
 
 
 
