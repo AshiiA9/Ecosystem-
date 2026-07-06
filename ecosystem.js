@@ -181,9 +181,9 @@ for (let service of memory.services) {
 
 serviceList.innerHTML += `<br><strong>Total Services: ${business.countScheduledServices()}</strong>`;
 serviceList.innerHTML += `<br><strong>Projected Revenue: $${business.calculateProjectedRevenue()}</strong>`;
-serviceList.innerHTML += '<br><strong>Knowledge Engine:</strong>
+serviceList.innerHTML += `<br><strong>Knowledge Engine:</strong>
   ${knowledgeEngine.studyServices()}
-';
+`;
 
 let nextService = business.findNextService();
 serviceList.innerHTML += `<br><strong>Next Service: ${nextService.customer} at ${nextService.time}</strong>`;
