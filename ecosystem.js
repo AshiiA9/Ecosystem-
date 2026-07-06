@@ -134,7 +134,7 @@ function createService ( customer, time, date, serviceType, status, cost, durati
   } else if (question.includes("next")) {
     let nextService = business.findNextService();
 
-    responsBox.innerHTML = 
+    responseBox.innerHTML = 
       "Your next service is " +
       nextService.customer +
       " at " +
