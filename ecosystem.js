@@ -117,6 +117,13 @@ function createService ( customer, time, date, serviceType, status, cost, durati
     return lowestService;
 }
   };
+
+let knowledgeEngine = {
+  studyServices() {
+    return "I studied " + memory.services.length
+  }
+}
+
     function askPie() {
   let question = document.getElementById("pieInput").value.toLowerCase();
   let responseBox = document.getElementById("pieResponse");
@@ -174,6 +181,9 @@ for (let service of memory.services) {
 
 serviceList.innerHTML += `<br><strong>Total Services: ${business.countScheduledServices()}</strong>`;
 serviceList.innerHTML += `<br><strong>Projected Revenue: $${business.calculateProjectedRevenue()}</strong>`;
+serviceList.innerHTML += '<br><strong>Knowledge Engine:</strong>
+  ${knowledgeEngine.studyServices()}
+';
 
 let nextService = business.findNextService();
 serviceList.innerHTML += `<br><strong>Next Service: ${nextService.customer} at ${nextService.time}</strong>`;
@@ -186,3 +196,5 @@ serviceList.innerHTML += `<br><strong>Highest Revenue Service: ${highestService.
 
 let lowestService = business.findLowestRevenueService();
 serviceList.innerHTML += `<br><strong>Lowest Revenue Service: ${lowestService.customer} - $${lowestService.cost}</strong>`;
+
+
