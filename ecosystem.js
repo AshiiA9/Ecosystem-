@@ -146,7 +146,7 @@ function createService ( customer, time, date, serviceType, status, cost, durati
   }
 }
  
-  };
+  }
 
 
   business.addCustomer("Johnson City Country Club", "", "", "");
