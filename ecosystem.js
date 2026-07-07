@@ -197,4 +197,11 @@ serviceList.innerHTML += `<br><strong>Highest Revenue Service: ${highestService.
 let lowestService = business.findLowestRevenueService();
 serviceList.innerHTML += `<br><strong>Lowest Revenue Service: ${lowestService.customer} - $${lowestService.cost}</strong>`;
 
+memory.gorillaDeskJobs = [ ];
+memory.productNeeds = [ ];
 
+function importGorillaDeskJobs (job) {
+  // turn GorillaDesk job data into our Service object shape
+}
+  
+  
