@@ -122,7 +122,7 @@ let knowledgeEngine = {
   studyServices() {
     return "I studied " + memory.services.length
   }
-}
+};
 
     function askPie() {
   let question = document.getElementById("pieInput").value.toLowerCase();
