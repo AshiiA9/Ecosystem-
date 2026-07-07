@@ -197,6 +197,23 @@ serviceList.innerHTML += `<br><strong>Highest Revenue Service: ${highestService.
 let lowestService = business.findLowestRevenueService();
 serviceList.innerHTML += `<br><strong>Lowest Revenue Service: ${lowestService.customer} - $${lowestService.cost}</strong>`;
 
+let gorillaDeskImport = {
+  importJobs(jobs) {
+    for (let job of job) {
+      business.addService(
+        job.customer,
+        job.time,
+      job.date,
+        job.serviceType,
+        "Scheduled",
+        job.price,
+        job.duration
+        );
+    }
+  }
+};
+      
+
 memory.gorillaDeskJobs = [ ];
 memory.productNeeds = [ ];
 
