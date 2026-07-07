@@ -197,7 +197,7 @@ serviceList.innerHTML += `<br><strong>Highest Revenue Service: ${highestService.
 let lowestService = business.findLowestRevenueService();
 serviceList.innerHTML += `<br><strong>Lowest Revenue Service: ${lowestService.customer} - $${lowestService.cost}</strong>`;
 
-let gorillaDeskImport = {
+let gorillaDeskBridge = {
   importJobs(jobs) {
     for (let job of job) {
       business.addService(
