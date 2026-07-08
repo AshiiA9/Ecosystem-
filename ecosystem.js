@@ -125,7 +125,7 @@ function createService ( customer, time, date, serviceType, status, cost, durati
 
 let knowledgeEngine = {
   studyServices() {
-    return "I studied " + memory.services.length + "services.";
+    return "I studied " + memory.services.length + " services.";
   }
 };
 
@@ -253,6 +253,9 @@ serviceList.innerHTML += `<br><strong>Total Services: ${business.countScheduledS
 serviceList.innerHTML += `<br><strong>Projected Revenue: $${business.calculateProjectedRevenue()}</strong>`;
 serviceList.innerHTML += `<br><strong>Knowledge Engine:</strong>
   ${knowledgeEngine.studyServices()}
+`;
+serviceList.innerHTML += `<br><strong>GorillaDesk:</strong>
+  ${memory.gorillaDesk.syncStatus}
 `;
 
 let nextService = business.findNextService();
