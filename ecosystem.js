@@ -170,37 +170,7 @@ business.addService("Southern Craft JC", "9:13AM", "July 7th 2026", "Weekly", "S
 
                               
  
-let serviceList = document.getElementById("serviceList");
 
-serviceList.innerHTML = "";
-
-for (let service of memory.services) {
-  serviceList.innerHTML += `
-    <div class="serviceCard">
-      <strong>${service.customer}</strong><br>
-      ${service.time} • ${service.date}<br>
-      ${service.serviceType} • ${service.status} • $${service.cost} • ${service.duration} mins
-    </div>
-  `;
-}
-
-serviceList.innerHTML += `<br><strong>Total Services: ${business.countScheduledServices()}</strong>`;
-serviceList.innerHTML += `<br><strong>Projected Revenue: $${business.calculateProjectedRevenue()}</strong>`;
-serviceList.innerHTML += `<br><strong>Knowledge Engine:</strong>
-  ${knowledgeEngine.studyServices()}
-`;
-
-let nextService = business.findNextService();
-serviceList.innerHTML += `<br><strong>Next Service: ${nextService.customer} at ${nextService.time}</strong>`;
-
-let longestService = business.findLongestService();
-serviceList.innerHTML += `<br><strong>Longest Service: ${longestService.customer} - ${longestService.duration} minutes</strong>`;
-
-let highestService = business.findHighestRevenueService();
-serviceList.innerHTML += `<br><strong>Highest Revenue Service: ${highestService.customer} - $${highestService.cost}</strong>`;
-
-let lowestService = business.findLowestRevenueService();
-serviceList.innerHTML += `<br><strong>Lowest Revenue Service: ${lowestService.customer} - $${lowestService.cost}</strong>`;
 
 let gorillaDeskBridge = {
   importJobs(jobs) {
@@ -248,5 +218,38 @@ memory.productNeeds = [ ];
 function importGorillaDeskJobs (job) {
   // turn GorillaDesk job data into our Service object shape
 }
+
+
+let serviceList = document.getElementById("serviceList");
+
+serviceList.innerHTML = "";
+
+for (let service of memory.services) {
+  serviceList.innerHTML += `
+    <div class="serviceCard">
+      <strong>${service.customer}</strong><br>
+      ${service.time} • ${service.date}<br>
+      ${service.serviceType} • ${service.status} • $${service.cost} • ${service.duration} mins
+    </div>
+  `;
+}
+
+serviceList.innerHTML += `<br><strong>Total Services: ${business.countScheduledServices()}</strong>`;
+serviceList.innerHTML += `<br><strong>Projected Revenue: $${business.calculateProjectedRevenue()}</strong>`;
+serviceList.innerHTML += `<br><strong>Knowledge Engine:</strong>
+  ${knowledgeEngine.studyServices()}
+`;
+
+let nextService = business.findNextService();
+serviceList.innerHTML += `<br><strong>Next Service: ${nextService.customer} at ${nextService.time}</strong>`;
+
+let longestService = business.findLongestService();
+serviceList.innerHTML += `<br><strong>Longest Service: ${longestService.customer} - ${longestService.duration} minutes</strong>`;
+
+let highestService = business.findHighestRevenueService();
+serviceList.innerHTML += `<br><strong>Highest Revenue Service: ${highestService.customer} - $${highestService.cost}</strong>`;
+
+let lowestService = business.findLowestRevenueService();
+serviceList.innerHTML += `<br><strong>Lowest Revenue Service: ${lowestService.customer} - $${lowestService.cost}</strong>`;
   
   
