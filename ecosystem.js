@@ -185,7 +185,12 @@ let gorillaDeskBridge = {
   importJobs(jobs) {
     memory.gorillaDesk.jobs = jobs;
     memory.gorillaDesk.lastSync = new Date().toLocaleString();
-
+gorillaDesk: {
+  jobs: [],
+  lastSync: null,
+  syncStatus: "Not synced yet"
+}
+    
     for (let job of jobs) {
       business.addService(
         job.customer,
