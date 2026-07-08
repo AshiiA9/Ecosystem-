@@ -185,6 +185,9 @@ let gorillaDeskBridge = {
   importJobs(jobs) {
     memory.gorillaDesk.jobs = jobs;
     memory.gorillaDesk.lastSync = new Date().toLocaleString();
+memory.gorillaDesk.syncStatus =
+  "Imported " + jobs.length + " GorillaDesk jobs.";
+    
 gorillaDesk: {
   jobs: [],
   lastSync: null,
