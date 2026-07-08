@@ -212,8 +212,6 @@ let sampleGorillaDeskJobs = [
 
 gorillaDeskBridge.importJobs(sampleGorillaDeskJobs);
 
-memory.gorillaDeskJobs = [ ];
-memory.productNeeds = [ ];
 
 function importGorillaDeskJobs (job) {
   // turn GorillaDesk job data into our Service object shape
