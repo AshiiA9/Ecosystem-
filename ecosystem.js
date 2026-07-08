@@ -125,7 +125,7 @@ function createService ( customer, time, date, serviceType, status, cost, durati
 
 let knowledgeEngine = {
   studyServices() {
-    return "I studied " + memory.services.length
+    return "I studied " + memory.services.length + "services.";
   }
 };
 
