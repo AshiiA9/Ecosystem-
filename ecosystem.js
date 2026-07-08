@@ -24,8 +24,13 @@ Digital Ecosystem Principles
 let memory = { 
   customers: [ ],
   services: [ ]
-  
+
+  gorillaDesk: {
+  jobs: [ ],
+    lastSync: null
+}
 };
+
 function createCustomer (name, phone, address, email) {
   return {
     name: name, 
