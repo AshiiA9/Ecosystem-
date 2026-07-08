@@ -204,11 +204,14 @@ serviceList.innerHTML += `<br><strong>Lowest Revenue Service: ${lowestService.cu
 
 let gorillaDeskBridge = {
   importJobs(jobs) {
+    memory.gorillaDesk.jobs = jobs;
+    memory.gorillaDesk.lastSync = "manual test sync";
+
     for (let job of jobs) {
       business.addService(
         job.customer,
         job.time,
-      job.date,
+        job.date,
         job.serviceType,
         "Scheduled",
         job.price,
