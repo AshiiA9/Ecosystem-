@@ -220,7 +220,27 @@ let gorillaDeskBridge = {
     }
   }
 };
-      
+
+let sampleGorillaDeskJobs = [
+  {
+    customer: "Test Customer 1",
+    time: "8:00AM",
+    date: "July 8th 2026",
+    serviceType: "General Pest",
+    price: 65,
+    duration: 30
+  },
+  {
+    customer: "Test Customer 2",
+    time: "9:00AM",
+    date: "July 8th 2026",
+    serviceType: "Mosquito",
+    price: 75,
+    duration: 25
+  }
+];
+
+gorillaDeskBridge.importJobs(sampleGorillaDeskJobs);
 
 memory.gorillaDeskJobs = [ ];
 memory.productNeeds = [ ];
