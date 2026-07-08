@@ -173,9 +173,18 @@ business.addService("Southern Craft JC", "9:13AM", "July 7th 2026", "Weekly", "S
 
 
 let gorillaDeskBridge = {
+  async syncSchedule() {
+    let response = await fetch("YOUR_BACKEND_URL/gorilladesk/jobs");
+    let jobs = await response.json();
+
+    this.importJobs(jobs);
+
+    return "Synced " + jobs.length + " GorillaDesk jobs.";
+  },
+
   importJobs(jobs) {
     memory.gorillaDesk.jobs = jobs;
-    memory.gorillaDesk.lastSync = "manual test sync";
+    memory.gorillaDesk.lastSync = new Date().toLocaleString();
 
     for (let job of jobs) {
       business.addService(
@@ -186,7 +195,7 @@ let gorillaDeskBridge = {
         "Scheduled",
         job.price,
         job.duration
-        );
+      );
     }
   }
 };
