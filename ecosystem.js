@@ -153,6 +153,12 @@ let knowledgeEngine = {
       " at " +
       nextService.time +
       ".";
+  } else if (question.includes("gorilladesk") || question.includes("sync")) {
+    responseBox.innerHTML =
+      "GorillaDesk status: " +
+      memory.gorillaDesk.syncStatus +
+      "<br>Last sync: " +
+      memory.gorillaDesk.lastSync;
   } else {
     responseBox.innerHTML =
       "Pie is awake, but she does not know how to answer that yet.";
