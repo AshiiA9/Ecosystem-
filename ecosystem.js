@@ -27,7 +27,7 @@ let memory = {
 
   gorillaDesk: {
   jobs: [ ],
-    lastSync: null
+    lastSync: null,
     syncStatus: "Not synced yet"
 }
 };
