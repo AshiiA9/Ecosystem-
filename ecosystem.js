@@ -28,6 +28,7 @@ let memory = {
   gorillaDesk: {
   jobs: [ ],
     lastSync: null
+    syncStatus: "Not synced yet"
 }
 };
 
@@ -188,11 +189,7 @@ let gorillaDeskBridge = {
 memory.gorillaDesk.syncStatus =
   "Imported " + jobs.length + " GorillaDesk jobs.";
     
-gorillaDesk: {
-  jobs: [],
-  lastSync: null,
-  syncStatus: "Not synced yet"
-}
+
     
     for (let job of jobs) {
       business.addService(
