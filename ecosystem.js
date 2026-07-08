@@ -23,7 +23,7 @@ Digital Ecosystem Principles
 */
 let memory = { 
   customers: [ ],
-  services: [ ]
+  services: [ ],
 
   gorillaDesk: {
   jobs: [ ],
@@ -204,7 +204,7 @@ serviceList.innerHTML += `<br><strong>Lowest Revenue Service: ${lowestService.cu
 
 let gorillaDeskBridge = {
   importJobs(jobs) {
-    for (let job of job) {
+    for (let job of jobs) {
       business.addService(
         job.customer,
         job.time,
