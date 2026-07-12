@@ -1,276 +1,155 @@
 // ==========================================
 // Digital Ecosystem
-//
 // Founder: Ash
+// Version: 0.7 Clean Slate Foundation
 //
-// Version: 0.6 Foundation
-//
-// Started: 2026
-//
+// JavaScript Rule:
+// JavaScript owns behavior.
+// HTML owns structure.
+// CSS owns appearance.
 // ==========================================
-/*
-==================================================
 
-Digital Ecosystem Principles
 
-1. Objects own information.
-2. Functions perform actions.
-3. Memory stores facts.
-4. Knowledge Engine studies Memory.
-5. Business makes final decisions.
+// ==========================================
+// 1. App State
+// ==========================================
 
-==================================================
-*/
-let memory = { 
-  customers: [ ],
-  services: [ ],
+const appState = {
+  activeSection: "today",
 
-  gorillaDesk: {
-  jobs: [ ],
-    lastSync: null,
-    syncStatus: "Not synced yet"
+  memory: {
+    services: [],
+    customers: [],
+    health: {
+      water: false,
+      brushedTeethMorning: false,
+      stretched: false,
+      notes: ""
+    }
+  }
+};
+
+
+// ==========================================
+// 2. Element Finder
+// ==========================================
+
+function getElement(id) {
+  return document.getElementById(id);
 }
-};
 
-function createCustomer (name, phone, address, email) {
-  return {
-    name: name, 
-    phone: phone,
-    address: address,
-    email: email
-  }
-  };
-function createService ( customer, time, date, serviceType, status, cost, duration) {
-  return  {
-    customer: customer,
-    time: time,
-    date: date,
-    serviceType: serviceType,
-    status: status,
-    cost: cost,
-    duration: duration
-  }
-};
-    
-  let business = {
-  name: "Transition Mode",
-  mode: "Transition", 
 
-    capabilities: {
-      customerContact: false,
-      liveScheduling: false,
-      invoicing: false, 
-      paymentProcessing: false,
-      onlineBooking: false, 
+// ==========================================
+// 3. Navigation
+// ==========================================
 
-      dataCollection: true,
-      reporting: true,
-      knowledgeEngine: true
-    },
-    addCustomer(name, phone, address, email) {
-      let newCustomer = createCustomer(name, phone, address, email);
-      memory.customers.push(newCustomer);
-    },
-    addService(customer, time, date, serviceType, status, cost, duration) {
-    let newService = createService(customer, time, date, serviceType, status, cost, duration);
-    memory.services.push(newService);
-    },
-    countScheduledServices( ) {
-      return memory.services.length;
-    },
-    calculateProjectedRevenue( ) {
-      let total = 0;
-      for (let service of memory.services) {
-        total += service.cost;
-      }
-        return total;
-      },
-    findNextService() {
-      return memory.services[0];
-    },
-    findLongestService() {
-  let longestService = memory.services[0];
-
-  for (let service of memory.services) {
-    if (service.duration > longestService.duration) {
-      longestService = service;
-    }
-  }
-
-  return longestService;
-   },
-
-    findHighestRevenueService() {
-  let highestService = memory.services[0];
-
-  for (let service of memory.services) {
-    if (service.cost > highestService.cost) {
-      highestService = service;
-    }
-  }
-
-  return highestService;
-},
-    findLowestRevenueService() {
-     let lowestService = memory.services[0];
-
-      for (let service of memory.services) {
-        if (service.cost < lowestService.cost) {
-        lowestService = service;
-      }
-    }
-
-    return lowestService;
+function openMenu() {
+  getElement("sideNavigation").classList.add("open");
+  getElement("menuOverlay").classList.add("open");
 }
-  };
 
-let knowledgeEngine = {
-  studyServices() {
-    return "I studied " + memory.services.length + " services.";
+function closeMenu() {
+  getElement("sideNavigation").classList.remove("open");
+  getElement("menuOverlay").classList.remove("open");
+}
+
+function showSection(sectionName) {
+  appState.activeSection = sectionName;
+
+  const allSections = document.querySelectorAll(".app-section");
+
+  for (let section of allSections) {
+    section.classList.remove("active-section");
   }
-};
 
-    function askPie() {
-  let question = document.getElementById("pieInput").value.toLowerCase();
-  let responseBox = document.getElementById("pieResponse");
+  const targetSection = getElement(sectionName + "Section");
 
-  if (question.includes("services")) {
+  if (targetSection) {
+    targetSection.classList.add("active-section");
+  }
+
+  const allNavLinks = document.querySelectorAll(".nav-link");
+
+  for (let link of allNavLinks) {
+    link.classList.remove("active");
+  }
+
+  const activeLink = document.querySelector(`[data-section="${sectionName}"]`);
+
+  if (activeLink) {
+    activeLink.classList.add("active");
+  }
+
+  closeMenu();
+}
+
+
+// ==========================================
+// 4. Pie Assistant
+// ==========================================
+
+function askPie() {
+  const input = getElement("pieInput");
+  const responseBox = getElement("pieResponse");
+
+  const question = input.value.toLowerCase();
+
+  if (question.includes("work")) {
     responseBox.innerHTML =
-      "You have " +
-      business.countScheduledServices() +
-      " scheduled services today.";
-  } else if (question.includes("revenue")) {
-    responseBox.innerHTML = 
-      "Projected revenue is $" +
-      business.calculateProjectedRevenue() +
-      ".";
-  } else if (question.includes("next")) {
-    let nextService = business.findNextService();
-
-    responseBox.innerHTML = 
-      "Your next service is " +
-      nextService.customer +
-      " at " +
-      nextService.time +
-      ".";
-  } else if (question.includes("gorilladesk") || question.includes("sync")) {
+      "Your Work section will connect to schedule intake first. Once services are in Memory, I’ll summarize jobs, times, service types, and products needed.";
+  } else if (question.includes("health")) {
     responseBox.innerHTML =
-      "GorillaDesk status: " +
-      memory.gorillaDesk.syncStatus +
-      "<br>Last sync: " +
-      memory.gorillaDesk.lastSync;
+      "Your Health section is starting with water, brushing teeth, stretching, and notes. We can expand it into routines and goals later.";
+  } else if (question.includes("schedule")) {
+    responseBox.innerHTML =
+      "Schedule intake is planned next. We can support CSV, manual quick add, pasted schedule text, and later screenshot/OCR.";
   } else {
     responseBox.innerHTML =
-      "Pie is awake, but she does not know how to answer that yet.";
+      "Pie is awake. Right now I can help explain Work, Health, and Schedule planning.";
   }
 }
- 
-  
 
 
-  business.addCustomer("Johnson City Country Club", "", "", "");
-business.addCustomer("Juan Siao", "", "", "");
-business.addCustomer("Southern Craft JC", "", "", "");
-business.addService("Johnson City Country Club", "8:00AM", "July 7th 2026", "Bi-Weekly", "Scheduled", 65, 30);
-business.addService("Juan Siao", "8:40AM", "July 7th 2026", "Weekly", "Scheduled", 32.5, 30);
-business.addService("Southern Craft JC", "9:13AM", "July 7th 2026", "Weekly", "Scheduled", 75, 30);
+// ==========================================
+// 5. Today Snapshot Rendering
+// ==========================================
 
-                              
- 
-
-
-let gorillaDeskBridge = {
-  async syncSchedule() {
-    let response = await fetch("YOUR_BACKEND_URL/gorilladesk/jobs");
-    let jobs = await response.json();
-
-    this.importJobs(jobs);
-
-    return "Synced " + jobs.length + " GorillaDesk jobs.";
-  },
-
-  importJobs(jobs) {
-    memory.gorillaDesk.jobs = jobs;
-    memory.gorillaDesk.lastSync = new Date().toLocaleString();
-memory.gorillaDesk.syncStatus =
-  "Imported " + jobs.length + " GorillaDesk jobs.";
-    
-
-    
-    for (let job of jobs) {
-      business.addService(
-        job.customer,
-        job.time,
-        job.date,
-        job.serviceType,
-        "Scheduled",
-        job.price,
-        job.duration
-      );
-    }
-  }
-};
-
-let sampleGorillaDeskJobs = [
-  {
-    customer: "Test Customer 1",
-    time: "8:00AM",
-    date: "July 8th 2026",
-    serviceType: "General Pest",
-    price: 65,
-    duration: 30
-  },
-  {
-    customer: "Test Customer 2",
-    time: "9:00AM",
-    date: "July 8th 2026",
-    serviceType: "Mosquito",
-    price: 75,
-    duration: 25
-  }
-];
-
-gorillaDeskBridge.importJobs(sampleGorillaDeskJobs);
-
-
-function importGorillaDeskJobs (job) {
-  // turn GorillaDesk job data into our Service object shape
+function updateTodaySnapshot() {
+  getElement("todayJobCount").innerText = appState.memory.services.length;
+  getElement("todayStartTime").innerText = "Not set";
+  getElement("todayEndTime").innerText = "Not set";
+  getElement("todayJobTypes").innerText = "None yet";
 }
 
 
-let serviceList = document.getElementById("serviceList");
+// ==========================================
+// 6. Event Listeners
+// ==========================================
 
-serviceList.innerHTML = "";
+function setupEventListeners() {
+  getElement("menuToggle").addEventListener("click", openMenu);
+  getElement("menuOverlay").addEventListener("click", closeMenu);
 
-for (let service of memory.services) {
-  serviceList.innerHTML += `
-    <div class="serviceCard">
-      <strong>${service.customer}</strong><br>
-      ${service.time} • ${service.date}<br>
-      ${service.serviceType} • ${service.status} • $${service.cost} • ${service.duration} mins
-    </div>
-  `;
+  const navLinks = document.querySelectorAll(".nav-link");
+
+  for (let link of navLinks) {
+    link.addEventListener("click", function () {
+      const sectionName = link.dataset.section;
+      showSection(sectionName);
+    });
+  }
+
+  getElement("askPieButton").addEventListener("click", askPie);
 }
 
-serviceList.innerHTML += `<br><strong>Total Services: ${business.countScheduledServices()}</strong>`;
-serviceList.innerHTML += `<br><strong>Projected Revenue: $${business.calculateProjectedRevenue()}</strong>`;
-serviceList.innerHTML += `<br><strong>Knowledge Engine:</strong>
-  ${knowledgeEngine.studyServices()}
-`;
-serviceList.innerHTML += `<br><strong>GorillaDesk:</strong>
-  ${memory.gorillaDesk.syncStatus}
-`;
 
-let nextService = business.findNextService();
-serviceList.innerHTML += `<br><strong>Next Service: ${nextService.customer} at ${nextService.time}</strong>`;
+// ==========================================
+// 7. App Startup
+// ==========================================
 
-let longestService = business.findLongestService();
-serviceList.innerHTML += `<br><strong>Longest Service: ${longestService.customer} - ${longestService.duration} minutes</strong>`;
+function startApp() {
+  setupEventListeners();
+  updateTodaySnapshot();
+}
 
-let highestService = business.findHighestRevenueService();
-serviceList.innerHTML += `<br><strong>Highest Revenue Service: ${highestService.customer} - $${highestService.cost}</strong>`;
-
-let lowestService = business.findLowestRevenueService();
-serviceList.innerHTML += `<br><strong>Lowest Revenue Service: ${lowestService.customer} - $${lowestService.cost}</strong>`;
-  
-  
+startApp();
