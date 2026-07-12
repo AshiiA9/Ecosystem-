@@ -254,3 +254,5 @@ function startApp() {
 }
 
 document.addEventListener("DOMContentLoaded", startApp);
+
+window.showWorkPanel = showWorkPanel;
