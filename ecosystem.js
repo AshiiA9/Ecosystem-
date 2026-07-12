@@ -126,6 +126,38 @@ function updateTodaySnapshot() {
 // 6. Event Listeners
 // ==========================================
 
+function showWorkPanel(panelName) {
+  const allWorkPanels = document.querySelectorAll(".work-panel");
+
+  for (let panel of allWorkPanels) {
+    panel.classList.remove("active-work-panel");
+  }
+
+  const targetPanel = getElement("work" + capitalizeFirstLetter(panelName) + "Panel");
+
+  if (targetPanel) {
+    targetPanel.classList.add("active-work-panel");
+  }
+
+  const allWorkTabs = document.querySelectorAll(".work-tab");
+
+  for (let tab of allWorkTabs) {
+    tab.classList.remove("active");
+  }
+
+  const activeTab = document.querySelector(`[data-work-tab="${panelName}"]`);
+
+  if (activeTab) {
+    activeTab.classList.add("active");
+  }
+}
+
+function capitalizeFirstLetter(word) {
+  return word.charAt(0).toUpperCase() + word.slice(1);
+}
+
+
+
 function setupEventListeners() {
   getElement("menuToggle").addEventListener("click", openMenu);
   getElement("menuOverlay").addEventListener("click", closeMenu);
