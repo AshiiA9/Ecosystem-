@@ -228,3 +228,54 @@ function startApp() {
 }
 
 startApp();
+
+
+// ==========================================
+// Work / Company Tab Controller
+// Strong version: uses event delegation
+// ==========================================
+
+document.addEventListener("click", function (event) {
+  const clickedWorkTab = event.target.closest(".work-tab");
+
+  if (!clickedWorkTab) {
+    return;
+  }
+
+  const panelName = clickedWorkTab.dataset.workTab;
+
+  const panelMap = {
+    dashboard: "workDashboardPanel",
+    schedule: "workSchedulePanel",
+    spending: "workSpendingPanel",
+    notes: "workNotesPanel",
+    insights: "workInsightsPanel",
+    inventory: "workInventoryPanel"
+  };
+
+  const targetPanelId = panelMap[panelName];
+
+  if (!targetPanelId) {
+    return;
+  }
+
+  const allTabs = document.querySelectorAll(".work-tab");
+
+  for (let tab of allTabs) {
+    tab.classList.remove("active");
+  }
+
+  clickedWorkTab.classList.add("active");
+
+  const allPanels = document.querySelectorAll(".work-panel");
+
+  for (let panel of allPanels) {
+    panel.classList.remove("active-work-panel");
+  }
+
+  const targetPanel = document.getElementById(targetPanelId);
+
+  if (targetPanel) {
+    targetPanel.classList.add("active-work-panel");
+  }
+});
