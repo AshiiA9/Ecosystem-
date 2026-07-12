@@ -31,7 +31,7 @@ const appState = {
 
 
 // ==========================================
-// 2. Element Finder
+// 2. Safe Element Finder
 // ==========================================
 
 function getElement(id) {
@@ -40,17 +40,33 @@ function getElement(id) {
 
 
 // ==========================================
-// 3. Navigation
+// 3. Main Navigation
 // ==========================================
 
 function openMenu() {
-  getElement("sideNavigation").classList.add("open");
-  getElement("menuOverlay").classList.add("open");
+  const sideNavigation = getElement("sideNavigation");
+  const menuOverlay = getElement("menuOverlay");
+
+  if (sideNavigation) {
+    sideNavigation.classList.add("open");
+  }
+
+  if (menuOverlay) {
+    menuOverlay.classList.add("open");
+  }
 }
 
 function closeMenu() {
-  getElement("sideNavigation").classList.remove("open");
-  getElement("menuOverlay").classList.remove("open");
+  const sideNavigation = getElement("sideNavigation");
+  const menuOverlay = getElement("menuOverlay");
+
+  if (sideNavigation) {
+    sideNavigation.classList.remove("open");
+  }
+
+  if (menuOverlay) {
+    menuOverlay.classList.remove("open");
+  }
 }
 
 function showSection(sectionName) {
@@ -85,12 +101,62 @@ function showSection(sectionName) {
 
 
 // ==========================================
-// 4. Pie Assistant
+// 4. Work / Company Tabs
+// ==========================================
+
+function showWorkPanel(panelName) {
+  const panelMap = {
+    dashboard: "workDashboardPanel",
+    schedule: "workSchedulePanel",
+    spending: "workSpendingPanel",
+    notes: "workNotesPanel",
+    insights: "workInsightsPanel",
+    inventory: "workInventoryPanel"
+  };
+
+  const targetPanelId = panelMap[panelName];
+
+  if (!targetPanelId) {
+    return;
+  }
+
+  const allWorkTabs = document.querySelectorAll(".work-tab");
+
+  for (let tab of allWorkTabs) {
+    tab.classList.remove("active");
+  }
+
+  const activeTab = document.querySelector(`[data-work-tab="${panelName}"]`);
+
+  if (activeTab) {
+    activeTab.classList.add("active");
+  }
+
+  const allWorkPanels = document.querySelectorAll(".work-panel");
+
+  for (let panel of allWorkPanels) {
+    panel.classList.remove("active-work-panel");
+  }
+
+  const targetPanel = getElement(targetPanelId);
+
+  if (targetPanel) {
+    targetPanel.classList.add("active-work-panel");
+  }
+}
+
+
+// ==========================================
+// 5. Pie Assistant
 // ==========================================
 
 function askPie() {
   const input = getElement("pieInput");
   const responseBox = getElement("pieResponse");
+
+  if (!input || !responseBox) {
+    return;
+  }
 
   const question = input.value.toLowerCase();
 
@@ -111,110 +177,70 @@ function askPie() {
 
 
 // ==========================================
-// 5. Today Snapshot Rendering
+// 6. Today Snapshot Rendering
 // ==========================================
 
 function updateTodaySnapshot() {
-  getElement("todayJobCount").innerText = appState.memory.services.length;
-  getElement("todayStartTime").innerText = "Not set";
-  getElement("todayEndTime").innerText = "Not set";
-  getElement("todayJobTypes").innerText = "None yet";
+  const jobCount = getElement("todayJobCount");
+  const startTime = getElement("todayStartTime");
+  const endTime = getElement("todayEndTime");
+  const jobTypes = getElement("todayJobTypes");
+
+  if (jobCount) {
+    jobCount.innerText = appState.memory.services.length;
+  }
+
+  if (startTime) {
+    startTime.innerText = "Not set";
+  }
+
+  if (endTime) {
+    endTime.innerText = "Not set";
+  }
+
+  if (jobTypes) {
+    jobTypes.innerText = "None yet";
+  }
 }
 
 
 // ==========================================
-// 6. Event Listeners
+// 7. Event Listeners
 // ==========================================
-
-function showWorkPanel(panelName) {
-  const allWorkPanels = document.querySelectorAll(".work-panel");
-
-  for (let panel of allWorkPanels) {
-    panel.classList.remove("active-work-panel");
-  }
-
-  const targetPanel = getElement("work" + capitalizeFirstLetter(panelName) + "Panel");
-
-  if (targetPanel) {
-    targetPanel.classList.add("active-work-panel");
-  }
-
-  const allWorkTabs = document.querySelectorAll(".work-tab");
-
-  for (let tab of allWorkTabs) {
-    tab.classList.remove("active");
-  }
-
-  const activeTab = document.querySelector(`[data-work-tab="${panelName}"]`);
-
-  if (activeTab) {
-    activeTab.classList.add("active");
-  }
-}
-
-function capitalizeFirstLetter(word) {
-  return word.charAt(0).toUpperCase() + word.slice(1);
-}
-
-
 
 function setupEventListeners() {
-  getElement("menuToggle").addEventListener("click", openMenu);
-  getElement("menuOverlay").addEventListener("click", closeMenu);
+  const menuToggle = getElement("menuToggle");
+  const menuOverlay = getElement("menuOverlay");
+  const pieButton = getElement("askPieButton");
 
-  const navLinks = document.querySelectorAll(".nav-link");
+  if (menuToggle) {
+    menuToggle.addEventListener("click", openMenu);
+  }
 
-  for (let link of navLinks) {
-    link.addEventListener("click", function () {
-      const sectionName = link.dataset.section;
+  if (menuOverlay) {
+    menuOverlay.addEventListener("click", closeMenu);
+  }
+
+  if (pieButton) {
+    pieButton.addEventListener("click", askPie);
+  }
+
+  document.addEventListener("click", function (event) {
+    const clickedNavLink = event.target.closest(".nav-link");
+
+    if (clickedNavLink) {
+      const sectionName = clickedNavLink.dataset.section;
       showSection(sectionName);
-    });
-  }
+      return;
+    }
 
-  const workTabs = document.querySelectorAll(".work-tab");
+    const clickedWorkTab = event.target.closest(".work-tab");
 
-  for (let tab of workTabs) {
-    tab.addEventListener("click", function () {
-      const panelName = tab.dataset.workTab;
+    if (clickedWorkTab) {
+      const panelName = clickedWorkTab.dataset.workTab;
       showWorkPanel(panelName);
-    });
-  }
-
-  getElement("askPieButton").addEventListener("click", askPie);
-}
-
-// ==========================================
-// 7. Work / Company Tabs
-// ==========================================
-
-function showWorkPanel(panelName) {
-  const allWorkPanels = document.querySelectorAll(".work-panel");
-
-  for (let panel of allWorkPanels) {
-    panel.classList.remove("active-work-panel");
-  }
-
-  const targetPanel = getElement("work" + capitalizeFirstLetter(panelName) + "Panel");
-
-  if (targetPanel) {
-    targetPanel.classList.add("active-work-panel");
-  }
-
-  const allWorkTabs = document.querySelectorAll(".work-tab");
-
-  for (let tab of allWorkTabs) {
-    tab.classList.remove("active");
-  }
-
-  const activeTab = document.querySelector(`[data-work-tab="${panelName}"]`);
-
-  if (activeTab) {
-    activeTab.classList.add("active");
-  }
-}
-
-function capitalizeFirstLetter(word) {
-  return word.charAt(0).toUpperCase() + word.slice(1);
+    }
+  });
 }
 
 
@@ -227,55 +253,4 @@ function startApp() {
   updateTodaySnapshot();
 }
 
-startApp();
-
-
-// ==========================================
-// Work / Company Tab Controller
-// Strong version: uses event delegation
-// ==========================================
-
-document.addEventListener("click", function (event) {
-  const clickedWorkTab = event.target.closest(".work-tab");
-
-  if (!clickedWorkTab) {
-    return;
-  }
-
-  const panelName = clickedWorkTab.dataset.workTab;
-
-  const panelMap = {
-    dashboard: "workDashboardPanel",
-    schedule: "workSchedulePanel",
-    spending: "workSpendingPanel",
-    notes: "workNotesPanel",
-    insights: "workInsightsPanel",
-    inventory: "workInventoryPanel"
-  };
-
-  const targetPanelId = panelMap[panelName];
-
-  if (!targetPanelId) {
-    return;
-  }
-
-  const allTabs = document.querySelectorAll(".work-tab");
-
-  for (let tab of allTabs) {
-    tab.classList.remove("active");
-  }
-
-  clickedWorkTab.classList.add("active");
-
-  const allPanels = document.querySelectorAll(".work-panel");
-
-  for (let panel of allPanels) {
-    panel.classList.remove("active-work-panel");
-  }
-
-  const targetPanel = document.getElementById(targetPanelId);
-
-  if (targetPanel) {
-    targetPanel.classList.add("active-work-panel");
-  }
-});
+document.addEventListener("DOMContentLoaded", startApp);
