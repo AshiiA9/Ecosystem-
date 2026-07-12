@@ -1,61 +1,264 @@
-
 <!DOCTYPE html>
-<html>
-  <head>
-    <style>
-      body{
-    font-family: Arial, sans-serif;
-      background:#f4f6f9;
-      margin:25px;
-      }
-      
-      #servicePanel{
-        border:2px solid #2b6cb0;
-        border-radius:12px;
-        background:white;
-        padding:15px;
-        width:100%;
-        max-width:700px;
+<html lang="en">
+<head>
+  <!--
+    Digital Ecosystem
+    Founder: Ash
+    Version: 0.7 Clean Slate Foundation
 
-        min-height:60px;
-        box-shadow:0 2px 8px rgba(0,0,0,.15);
-      }
-      #serviceList{
-        line-height:1.8;
-      }
-      .serviceCard{
-        border:1px solid #ddd;
-        border-radius:10px;
-        padding:10px;
-        margin-bottom:10px;
-        background:#fff;
-      }
-      </style>
-          
-        
-  </head>
-  <body>
-    <h1>Digital Ecosystem</h1>
+    Purpose:
+    A mobile-first personal operating system for work, business, family,
+    health, money, home, and long-term life optimization.
 
-    <p>This system is being built to save time, 
-      preserve knowledge, and create freedom for my family. </p>
-<section id="pieHome">
-<div class="pieCard">
-<h2> 🌿 Pie</h2>
-<p id="pieGreeting">Good morning, Ash.</p>
-<p id="pieSummary"></p>
+    Core Rule:
+    HTML owns structure.
+    CSS owns appearance.
+    JavaScript owns behavior.
+  -->
 
-<input id="pieInput" placeholder="Ask Pie about today..." />
-<button onclick="askPie()">Ask Pie</button>
-<div id= "pieResponse"></div>
-</div>
-</section>
-    <h2>Scheduled Services</h2>
-    <div id="servicePanel">
-      <div id="serviceList"></div>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Digital Ecosystem</title>
+
+  <link rel="stylesheet" href="src/styles/app.css" />
+</head>
+
+<body>
+  <div id="appShell" class="app-shell">
+
+    <!-- Top App Header -->
+    <header class="app-header">
+      <button id="menuToggle" class="icon-button" aria-label="Open navigation menu">
+        ☰
+      </button>
+
+      <div class="app-title-group">
+        <h1>Ecosystem</h1>
+        <p>with Pie</p>
+      </div>
+
+      <button id="pieButton" class="pie-avatar-button" aria-label="Open Pie assistant">
+        🥧
+      </button>
+    </header>
+
+    <!-- Side Navigation -->
+    <nav id="sideNavigation" class="side-navigation" aria-label="Main navigation">
+      <div class="nav-header">
+        <div class="pie-avatar-large">🥧</div>
+
+        <div>
+          <h2>Pie</h2>
+          <p>Your assistant</p>
+        </div>
+      </div>
+
+      <button class="nav-link active" data-section="today">Home / Today</button>
+      <button class="nav-link" data-section="work">Work / Company</button>
+      <button class="nav-link" data-section="family">Family</button>
+      <button class="nav-link" data-section="home">Home</button>
+      <button class="nav-link" data-section="money">Money</button>
+      <button class="nav-link" data-section="health">Health</button>
+      <button class="nav-link" data-section="gdd">GDD</button>
+      <button class="nav-link" data-section="pie">Pie</button>
+
+      <div class="nav-footer-card">
+        <strong>Pie is here to help</strong>
+        <p>Ask questions, get insights, and stay on track.</p>
+      </div>
+    </nav>
+
+    <!-- Overlay for mobile menu -->
+    <div id="menuOverlay" class="menu-overlay"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+      <!-- Today / Home -->
+      <section id="todaySection" class="app-section active-section">
+        <section class="card schedule-preview-card">
+          <div class="card-header">
+            <h2>GD Schedule</h2>
+            <button class="text-button">View full</button>
+          </div>
+
+          <p class="helper-note">
+            Schedule capture will connect here later through CSV, manual entry, or screenshot intake.
+          </p>
+
+          <div class="date-strip">
+            <div>
+              <span>Mon</span>
+              <strong>12</strong>
+            </div>
+
+            <div>
+              <span>Tue</span>
+              <strong>13</strong>
+            </div>
+
+            <div class="selected-date">
+              <span>Wed</span>
+              <strong>14</strong>
+            </div>
+
+            <div>
+              <span>Thu</span>
+              <strong>15</strong>
+            </div>
+
+            <div>
+              <span>Fri</span>
+              <strong>16</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="card pie-card">
+          <div class="pie-card-header">
+            <div class="pie-avatar-small">🥧</div>
+
+            <div>
+              <h2>Pie</h2>
+              <p>Here’s your snapshot for today.</p>
+            </div>
+          </div>
+
+          <section class="snapshot-panel">
+            <div class="snapshot-header">
+              <h2>Today’s Snapshot</h2>
+              <span>⌃</span>
+            </div>
+
+            <div class="snapshot-block">
+              <h3>Work</h3>
+
+              <ul class="value-list">
+                <li><strong>Jobs:</strong> <span id="todayJobCount">0</span></li>
+                <li><strong>Start:</strong> <span id="todayStartTime">Not set</span></li>
+                <li><strong>End:</strong> <span id="todayEndTime">Not set</span></li>
+                <li><strong>Job types:</strong> <span id="todayJobTypes">None yet</span></li>
+              </ul>
+            </div>
+
+            <div class="snapshot-block">
+              <h3>Family</h3>
+
+              <ul class="value-list">
+                <li>Important events will appear here.</li>
+              </ul>
+
+              <div class="note-strip">
+                Note to self: Add family notes relevant to today.
+              </div>
+            </div>
+
+            <div class="snapshot-block">
+              <h3>Health</h3>
+
+              <label class="check-row">
+                <input type="checkbox" />
+                <span>1/2 gal water</span>
+              </label>
+
+              <label class="check-row">
+                <input type="checkbox" />
+                <span>Brush teeth morning</span>
+              </label>
+
+              <label class="check-row">
+                <input type="checkbox" />
+                <span>Stretch</span>
+              </label>
+
+              <label class="field-label" for="healthNotes">Notes</label>
+              <textarea id="healthNotes" placeholder="Add a note..."></textarea>
+            </div>
+          </section>
+        </section>
+      </section>
+
+      <!-- Work / Company -->
+      <section id="workSection" class="app-section">
+        <section class="section-header-card">
+          <h2>Work / Company</h2>
+          <p>Jobs, routes, spending, inventory, insights, and schedule planning.</p>
+        </section>
+
+        <section class="card">
+          <h3>Work module coming next</h3>
+          <p>
+            This section will be built after the mobile shell is stable.
+            First target: schedule intake and Work / Company dashboard.
+          </p>
+        </section>
+      </section>
+
+      <!-- Family -->
+      <section id="familySection" class="app-section">
+        <section class="section-header-card">
+          <h2>Family</h2>
+          <p>Important events, reminders, notes, and family planning.</p>
+        </section>
+      </section>
+
+      <!-- Home -->
+      <section id="homeSection" class="app-section">
+        <section class="section-header-card">
+          <h2>Home</h2>
+          <p>Chores, house projects, routines, and home notes.</p>
+        </section>
+      </section>
+
+      <!-- Money -->
+      <section id="moneySection" class="app-section">
+        <section class="section-header-card">
+          <h2>Money</h2>
+          <p>Budgeting, spending, bills, and financial planning.</p>
+        </section>
+      </section>
+
+      <!-- Health -->
+      <section id="healthSection" class="app-section">
+        <section class="section-header-card">
+          <h2>Health</h2>
+          <p>Daily health checklist, routines, notes, and goals.</p>
+        </section>
+      </section>
+
+      <!-- GDD -->
+      <section id="gddSection" class="app-section">
+        <section class="section-header-card">
+          <h2>GDD</h2>
+          <p>Growing degree day tools and pest timing intelligence.</p>
+        </section>
+      </section>
+
+      <!-- Pie -->
+      <section id="pieSection" class="app-section">
+        <section class="section-header-card">
+          <h2>Pie</h2>
+          <p>Personal Intelligence Entity. The main operating interface for the ecosystem.</p>
+        </section>
+
+        <section class="card">
+          <label class="field-label" for="pieInput">Ask Pie</label>
+          <input id="pieInput" type="text" placeholder="Ask Pie about today..." />
+
+          <button id="askPieButton" class="primary-button">
+            Ask Pie
+          </button>
+
+          <div id="pieResponse" class="pie-response">
+            Pie is awake.
+          </div>
+        </section>
+      </section>
+
+    </main>
   </div>
-    <script src="ecosystem.js?v=19"></script>
-  
-  </body>
-</html>
 
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>
