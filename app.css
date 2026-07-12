@@ -559,5 +559,132 @@ textarea {
 
   .icon-button {
     display: none;
+
+
+     /* ==========================================
+   Work / Company Module
+========================================== */
+
+.work-layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* ---------- Work Sub Navigation ---------- */
+
+.work-subnav {
+  display: flex;
+  gap: var(--space-sm);
+
+  overflow-x: auto;
+  padding: 4px 2px 10px;
+
+  scrollbar-width: none;
+}
+
+.work-subnav::-webkit-scrollbar {
+  display: none;
+}
+
+.work-tab {
+  flex: 0 0 auto;
+
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+
+  padding: 11px 14px;
+
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--color-text);
+
+  font-size: 0.9rem;
+  font-weight: 700;
+
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.16);
+}
+
+.work-tab.active {
+  background: var(--color-amber);
+  color: var(--color-text-dark);
+  border-color: var(--color-amber);
+}
+
+/* ---------- Work Panels ---------- */
+
+.work-panel {
+  display: none;
+}
+
+.work-panel.active-work-panel {
+  display: block;
+}
+
+/* ---------- Metric Cards ---------- */
+
+.metric-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+  margin: var(--space-md) 0;
+}
+
+.metric-row > div {
+  padding: var(--space-md);
+
+  border-radius: var(--radius-medium);
+  background: rgba(242, 184, 75, 0.16);
+}
+
+.metric-label {
+  display: block;
+  margin-bottom: 6px;
+
+  color: #6b5b42;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.metric-number {
+  display: block;
+
+  color: var(--color-text-dark);
+  font-size: 2rem;
+  line-height: 1;
+}
+
+/* ---------- Pie Advice ---------- */
+
+.pie-advice-card {
+  background: linear-gradient(135deg, #ffe7ad, #fff8ed);
+}
+
+/* ---------- Desktop Work Layout ---------- */
+
+@media (min-width: 800px) {
+  .work-layout {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    align-items: start;
+  }
+
+  .work-subnav {
+    position: sticky;
+    top: 100px;
+
+    flex-direction: column;
+    overflow: visible;
+
+    padding: 0;
+  }
+
+  .work-tab {
+    width: 100%;
+    border-radius: var(--radius-medium);
+    text-align: left;
   }
 }
+  
+  
