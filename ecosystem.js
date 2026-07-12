@@ -139,6 +139,15 @@ function setupEventListeners() {
     });
   }
 
+  const workTabs = document.querySelectorAll(".work-tab");
+
+  for (let tab of workTabs) {
+    tab.addEventListener("click", function () {
+      const panelName = tab.dataset.workTab;
+      showWorkPanel(panelName);
+    });
+  }
+
   getElement("askPieButton").addEventListener("click", askPie);
 }
 
