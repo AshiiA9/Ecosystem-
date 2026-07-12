@@ -186,20 +186,189 @@
       </section>
 
       <!-- Work / Company -->
-      <section id="workSection" class="app-section">
-        <section class="section-header-card">
-          <h2>Work / Company</h2>
-          <p>Jobs, routes, spending, inventory, insights, and schedule planning.</p>
-        </section>
+      <!-- Work / Company -->
+<section id="workSection" class="app-section">
 
-        <section class="card">
-          <h3>Work module coming next</h3>
-          <p>
-            This section will be built after the mobile shell is stable.
-            First target: schedule intake and Work / Company dashboard.
-          </p>
-        </section>
+  <section class="section-header-card">
+    <h2>Work / Company</h2>
+    <p>Jobs, routes, spending, inventory, insights, and schedule planning.</p>
+  </section>
+
+  <section class="work-layout">
+
+    <!-- Work Sub Menu -->
+    <nav class="work-subnav" aria-label="Work and company navigation">
+      <button class="work-tab active" data-work-tab="dashboard">Dashboard</button>
+      <button class="work-tab" data-work-tab="schedule">Schedule / Upcoming</button>
+      <button class="work-tab" data-work-tab="spending">Spending / Costs</button>
+      <button class="work-tab" data-work-tab="notes">Notes</button>
+      <button class="work-tab" data-work-tab="insights">Insights</button>
+      <button class="work-tab" data-work-tab="inventory">Inventory</button>
+    </nav>
+
+    <!-- Work Dashboard -->
+    <section id="workDashboardPanel" class="work-panel active-work-panel">
+
+      <section class="card">
+        <h3>Jobs Completed Today</h3>
+
+        <div class="metric-row">
+          <div>
+            <span class="metric-label">Completed</span>
+            <strong id="jobsCompletedToday" class="metric-number">0</strong>
+          </div>
+
+          <div>
+            <span class="metric-label">Upcoming</span>
+            <strong id="jobsUpcomingToday" class="metric-number">0</strong>
+          </div>
+        </div>
+
+        <p class="helper-note">
+          This will calculate from imported schedule data once Schedule Intake is connected.
+        </p>
       </section>
+
+      <section class="card">
+        <h3>Weekly Jobs Upcoming</h3>
+
+        <ul class="value-list">
+          <li><strong>Mosquito:</strong> <span id="mosquitoUpcoming">0</span></li>
+          <li><strong>General Pest:</strong> <span id="generalPestUpcoming">0</span></li>
+          <li><strong>Quarterly:</strong> <span id="quarterlyUpcoming">0</span></li>
+          <li><strong>Rodent:</strong> <span id="rodentUpcoming">0</span></li>
+        </ul>
+      </section>
+
+      <section class="card pie-advice-card">
+        <div class="pie-card-header">
+          <div class="pie-avatar-small">🥧</div>
+
+          <div>
+            <h3>Pie Advice</h3>
+            <p id="workPieAdvice">
+              Once your schedule is imported, I’ll help predict products, time, workload, and route needs.
+            </p>
+          </div>
+        </div>
+      </section>
+
+    </section>
+
+    <!-- Schedule / Upcoming -->
+    <section id="workSchedulePanel" class="work-panel">
+
+      <section class="card">
+        <h3>Schedule Intake</h3>
+
+        <p>
+          This is where CSV import, manual quick add, pasted schedule text, and screenshot intake will live.
+        </p>
+
+        <button class="primary-button">
+          Add Schedule Intake Tool
+        </button>
+      </section>
+
+      <section class="card">
+        <h3>Upcoming Services</h3>
+
+        <div id="upcomingServicesList">
+          <p>No services imported yet.</p>
+        </div>
+      </section>
+
+    </section>
+
+    <!-- Spending / Costs -->
+    <section id="workSpendingPanel" class="work-panel">
+
+      <section class="card">
+        <h3>Fuel</h3>
+
+        <ul class="value-list">
+          <li><strong>This week:</strong> $0</li>
+          <li><strong>This month:</strong> $0</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h3>Product Monthly</h3>
+
+        <div class="snapshot-block">
+          <h3>Exterior</h3>
+          <ul class="value-list">
+            <li>CrossCheck Plus usage will appear here.</li>
+          </ul>
+        </div>
+
+        <div class="snapshot-block">
+          <h3>Interior</h3>
+          <ul class="value-list">
+            <li>Interior product usage will appear here.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="card pie-advice-card">
+        <div class="pie-card-header">
+          <div class="pie-avatar-small">🥧</div>
+
+          <div>
+            <h3>Pie Advice</h3>
+            <p>
+              I’ll compare spending patterns after you begin logging fuel and product costs.
+            </p>
+          </div>
+        </div>
+      </section>
+
+    </section>
+
+    <!-- Notes -->
+    <section id="workNotesPanel" class="work-panel">
+
+      <section class="card">
+        <h3>Work Notes</h3>
+
+        <label class="field-label" for="workNotes">Notes</label>
+        <textarea id="workNotes" placeholder="Add work or company notes..."></textarea>
+      </section>
+
+    </section>
+
+    <!-- Insights -->
+    <section id="workInsightsPanel" class="work-panel">
+
+      <section class="card">
+        <h3>Insights</h3>
+
+        <ul class="value-list">
+          <li>Route insights will appear here.</li>
+          <li>Product trends will appear here.</li>
+          <li>Service timing patterns will appear here.</li>
+        </ul>
+      </section>
+
+    </section>
+
+    <!-- Inventory -->
+    <section id="workInventoryPanel" class="work-panel">
+
+      <section class="card">
+        <h3>Inventory</h3>
+
+        <ul class="value-list">
+          <li>Products on hand will appear here.</li>
+          <li>Products needed will appear here.</li>
+          <li>Restock alerts will appear here.</li>
+        </ul>
+      </section>
+
+    </section>
+
+  </section>
+</section>
 
       <!-- Family -->
       <section id="familySection" class="app-section">
