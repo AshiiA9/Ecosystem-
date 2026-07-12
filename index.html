@@ -197,15 +197,15 @@
   <section class="work-layout">
 
     <!-- Work Sub Menu -->
-    <nav class="work-subnav" aria-label="Work and company navigation">
-      <button class="work-tab active" data-work-tab="dashboard">Dashboard</button>
-      <button class="work-tab" data-work-tab="schedule">Schedule / Upcoming</button>
-      <button class="work-tab" data-work-tab="spending">Spending / Costs</button>
-      <button class="work-tab" data-work-tab="notes">Notes</button>
-      <button class="work-tab" data-work-tab="insights">Insights</button>
-      <button class="work-tab" data-work-tab="inventory">Inventory</button>
-    </nav>
-
+    <!-- Work Sub Menu -->
+<nav class="work-subnav" aria-label="Work and company navigation">
+  <button class="work-tab active" onclick="showWorkPanel('dashboard')">Dashboard</button>
+  <button class="work-tab" onclick="showWorkPanel('schedule')">Schedule / Upcoming</button>
+  <button class="work-tab" onclick="showWorkPanel('spending')">Spending / Costs</button>
+  <button class="work-tab" onclick="showWorkPanel('notes')">Notes</button>
+  <button class="work-tab" onclick="showWorkPanel('insights')">Insights</button>
+  <button class="work-tab" onclick="showWorkPanel('inventory')">Inventory</button>
+</nav>
     <!-- Work Dashboard -->
     <section id="workDashboardPanel" class="work-panel active-work-panel">
 
