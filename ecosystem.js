@@ -1,22 +1,8 @@
-// ==========================================
-// Digital Ecosystem
-// Founder: Ash
-// Version: 0.7 Clean Slate Foundation
-//
-// JavaScript Rule:
-// JavaScript owns behavior.
-// HTML owns structure.
-// CSS owns appearance.
-// ==========================================
-
-
-// ==========================================
-// 1. App State
-// ==========================================
+// Digital Ecosystem v0.8 — Clean UI Foundation
 
 const appState = {
   activeSection: "today",
-
+  activeWorkPanel: "dashboard",
   memory: {
     services: [],
     customers: [],
@@ -29,126 +15,81 @@ const appState = {
   }
 };
 
+const sectionIds = {
+  today: "todaySection",
+  work: "workSection",
+  family: "familySection",
+  home: "homeSection",
+  money: "moneySection",
+  health: "healthSection",
+  gdd: "gddSection",
+  pie: "pieSection"
+};
 
-// ==========================================
-// 2. Safe Element Finder
-// ==========================================
+const workPanelIds = {
+  dashboard: "workDashboardPanel",
+  schedule: "workSchedulePanel",
+  spending: "workSpendingPanel",
+  notes: "workNotesPanel",
+  insights: "workInsightsPanel",
+  inventory: "workInventoryPanel"
+};
 
 function getElement(id) {
   return document.getElementById(id);
 }
 
-
-// ==========================================
-// 3. Main Navigation
-// ==========================================
-
 function openMenu() {
-  const sideNavigation = getElement("sideNavigation");
-  const menuOverlay = getElement("menuOverlay");
-
-  if (sideNavigation) {
-    sideNavigation.classList.add("open");
-  }
-
-  if (menuOverlay) {
-    menuOverlay.classList.add("open");
-  }
+  getElement("sideNavigation")?.classList.add("open");
+  getElement("menuOverlay")?.classList.add("open");
 }
 
 function closeMenu() {
-  const sideNavigation = getElement("sideNavigation");
-  const menuOverlay = getElement("menuOverlay");
-
-  if (sideNavigation) {
-    sideNavigation.classList.remove("open");
-  }
-
-  if (menuOverlay) {
-    menuOverlay.classList.remove("open");
-  }
+  getElement("sideNavigation")?.classList.remove("open");
+  getElement("menuOverlay")?.classList.remove("open");
 }
 
 function showSection(sectionName) {
+  const targetId = sectionIds[sectionName];
+
+  if (!targetId) {
+    return;
+  }
+
   appState.activeSection = sectionName;
 
-  const allSections = document.querySelectorAll(".app-section");
-
-  for (let section of allSections) {
+  document.querySelectorAll(".app-section").forEach(section => {
     section.classList.remove("active-section");
-  }
+  });
 
-  const targetSection = getElement(sectionName + "Section");
+  getElement(targetId)?.classList.add("active-section");
 
-  if (targetSection) {
-    targetSection.classList.add("active-section");
-  }
-
-  const allNavLinks = document.querySelectorAll(".nav-link");
-
-  for (let link of allNavLinks) {
-    link.classList.remove("active");
-  }
-
-  const activeLink = document.querySelector(`[data-section="${sectionName}"]`);
-
-  if (activeLink) {
-    activeLink.classList.add("active");
-  }
+  document.querySelectorAll(".nav-link").forEach(link => {
+    link.classList.toggle("active", link.dataset.section === sectionName);
+  });
 
   closeMenu();
 }
 
-
-// ==========================================
-// 4. Work / Company Tabs
-// ==========================================
-
 function showWorkPanel(panelName) {
-  const panelMap = {
-    dashboard: "workDashboardPanel",
-    schedule: "workSchedulePanel",
-    spending: "workSpendingPanel",
-    notes: "workNotesPanel",
-    insights: "workInsightsPanel",
-    inventory: "workInventoryPanel"
-  };
+  const targetId = workPanelIds[panelName];
 
-  const targetPanelId = panelMap[panelName];
-
-  if (!targetPanelId) {
+  if (!targetId) {
     return;
   }
 
-  const allWorkTabs = document.querySelectorAll(".work-tab");
+  appState.activeWorkPanel = panelName;
 
-  for (let tab of allWorkTabs) {
-    tab.classList.remove("active");
-  }
-
-  const activeTab = document.querySelector(`[data-work-tab="${panelName}"]`);
-
-  if (activeTab) {
-    activeTab.classList.add("active");
-  }
-
-  const allWorkPanels = document.querySelectorAll(".work-panel");
-
-  for (let panel of allWorkPanels) {
+  document.querySelectorAll(".work-panel").forEach(panel => {
     panel.classList.remove("active-work-panel");
-  }
+  });
 
-  const targetPanel = getElement(targetPanelId);
+  getElement(targetId)?.classList.add("active-work-panel");
 
-  if (targetPanel) {
-    targetPanel.classList.add("active-work-panel");
-  }
+  document.querySelectorAll(".work-tab").forEach(tab => {
+    tab.classList.toggle("active", tab.dataset.workTab === panelName);
+  });
 }
-
-
-// ==========================================
-// 5. Pie Assistant
-// ==========================================
 
 function askPie() {
   const input = getElement("pieInput");
@@ -158,101 +99,87 @@ function askPie() {
     return;
   }
 
-  const question = input.value.toLowerCase();
+  const question = input.value.trim().toLowerCase();
+
+  if (!question) {
+    responseBox.innerHTML = "Ask me about work, schedule, health, products, or today.";
+    return;
+  }
 
   if (question.includes("work")) {
     responseBox.innerHTML =
-      "Your Work section will connect to schedule intake first. Once services are in Memory, I’ll summarize jobs, times, service types, and products needed.";
+      "Your Work section is the first serious module. We’ll connect schedule intake, product needs, route summaries, and cost insights here.";
   } else if (question.includes("health")) {
     responseBox.innerHTML =
-      "Your Health section is starting with water, brushing teeth, stretching, and notes. We can expand it into routines and goals later.";
+      "Your Health section is starting with daily checklist tracking. Later, I can help with routines, goals, and patterns.";
   } else if (question.includes("schedule")) {
     responseBox.innerHTML =
-      "Schedule intake is planned next. We can support CSV, manual quick add, pasted schedule text, and later screenshot/OCR.";
+      "Schedule Intake is next: CSV import, manual quick add, pasted schedule text, and later screenshot/OCR.";
+  } else if (question.includes("product")) {
+    responseBox.innerHTML =
+      "Once jobs are imported, I’ll compare service types against your product map and predict what you likely need.";
+  } else if (question.includes("today")) {
+    responseBox.innerHTML =
+      "Today’s Snapshot is designed to merge work, family, health, and notes into one quick daily operating screen.";
   } else {
     responseBox.innerHTML =
-      "Pie is awake. Right now I can help explain Work, Health, and Schedule planning.";
+      "Pie is awake. I can help explain Work, Schedule, Health, Products, and Today’s Snapshot.";
   }
 }
 
-
-// ==========================================
-// 6. Today Snapshot Rendering
-// ==========================================
-
 function updateTodaySnapshot() {
+  const services = appState.memory.services;
+
   const jobCount = getElement("todayJobCount");
   const startTime = getElement("todayStartTime");
   const endTime = getElement("todayEndTime");
   const jobTypes = getElement("todayJobTypes");
 
-  if (jobCount) {
-    jobCount.innerText = appState.memory.services.length;
-  }
-
-  if (startTime) {
-    startTime.innerText = "Not set";
-  }
-
-  if (endTime) {
-    endTime.innerText = "Not set";
-  }
-
-  if (jobTypes) {
-    jobTypes.innerText = "None yet";
-  }
+  if (jobCount) jobCount.innerText = services.length;
+  if (startTime) startTime.innerText = "Not set";
+  if (endTime) endTime.innerText = "Not set";
+  if (jobTypes) jobTypes.innerText = "None yet";
 }
 
-
-// ==========================================
-// 7. Event Listeners
-// ==========================================
-
 function setupEventListeners() {
-  const menuToggle = getElement("menuToggle");
-  const menuOverlay = getElement("menuOverlay");
-  const pieButton = getElement("askPieButton");
+  getElement("menuToggle")?.addEventListener("click", openMenu);
+  getElement("headerPieButton")?.addEventListener("click", () => showSection("pie"));
+  getElement("menuOverlay")?.addEventListener("click", closeMenu);
+  getElement("askPieButton")?.addEventListener("click", askPie);
 
-  if (menuToggle) {
-    menuToggle.addEventListener("click", openMenu);
-  }
+  document.addEventListener("click", event => {
+    const navLink = event.target.closest(".nav-link");
 
-  if (menuOverlay) {
-    menuOverlay.addEventListener("click", closeMenu);
-  }
-
-  if (pieButton) {
-    pieButton.addEventListener("click", askPie);
-  }
-
-  document.addEventListener("click", function (event) {
-    const clickedNavLink = event.target.closest(".nav-link");
-
-    if (clickedNavLink) {
-      const sectionName = clickedNavLink.dataset.section;
-      showSection(sectionName);
+    if (navLink) {
+      showSection(navLink.dataset.section);
       return;
     }
 
-    const clickedWorkTab = event.target.closest(".work-tab");
+    const sectionJump = event.target.closest("[data-section-jump]");
 
-    if (clickedWorkTab) {
-      const panelName = clickedWorkTab.dataset.workTab;
-      showWorkPanel(panelName);
+    if (sectionJump) {
+      showSection(sectionJump.dataset.sectionJump);
+
+      if (sectionJump.dataset.workJump) {
+        showWorkPanel(sectionJump.dataset.workJump);
+      }
+
+      return;
+    }
+
+    const workTab = event.target.closest(".work-tab");
+
+    if (workTab) {
+      showWorkPanel(workTab.dataset.workTab);
     }
   });
 }
 
-
-// ==========================================
-// 8. App Startup
-// ==========================================
-
 function startApp() {
   setupEventListeners();
   updateTodaySnapshot();
+  showSection("today");
+  showWorkPanel("dashboard");
 }
 
 document.addEventListener("DOMContentLoaded", startApp);
-
-window.showWorkPanel = showWorkPanel;

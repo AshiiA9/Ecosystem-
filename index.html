@@ -1,183 +1,98 @@
 <!DOCTYPE html>
-
-<link rel="stylesheet" href="./app.css?v=2" />
-
-
-
-
 <html lang="en">
 <head>
-  <!--
-    Digital Ecosystem
-    Founder: Ash
-    Version: 0.7 Clean Slate Foundation
-
-    Purpose:
-    A mobile-first personal operating system for work, business, family,
-    health, money, home, and long-term life optimization.
-
-    Core Rule:
-    HTML owns structure.
-    CSS owns appearance.
-    JavaScript owns behavior.
-  -->
-
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#071827" />
   <title>Digital Ecosystem</title>
-
-  <link rel="stylesheet" href="src/styles/app.css" />
+  <link rel="stylesheet" href="./app.css?v=8" />
 </head>
-
 <body>
   <div id="appShell" class="app-shell">
-
-    <!-- Top App Header -->
     <header class="app-header">
-      <button id="menuToggle" class="icon-button" aria-label="Open navigation menu">
-        ☰
-      </button>
-
-      <div class="app-title-group">
+      <button id="menuToggle" class="icon-button" aria-label="Open navigation menu"><span></span><span></span><span></span></button>
+      <div class="brand-lockup">
+        <p class="eyebrow">Digital</p>
         <h1>Ecosystem</h1>
-        <p>with Pie</p>
+        <p class="brand-script">with Pie</p>
       </div>
-
-      <button id="pieButton" class="pie-avatar-button" aria-label="Open Pie assistant">
-        🥧
-      </button>
+      <button id="headerPieButton" class="pie-orb" aria-label="Open Pie">🥧</button>
     </header>
 
-    <!-- Side Navigation -->
-    <nav id="sideNavigation" class="side-navigation" aria-label="Main navigation">
-      <div class="nav-header">
-        <div class="pie-avatar-large">🥧</div>
+    <div id="menuOverlay" class="menu-overlay"></div>
 
+    <nav id="sideNavigation" class="side-navigation" aria-label="Main navigation">
+      <div class="nav-profile">
+        <div class="pie-orb large">🥧</div>
         <div>
           <h2>Pie</h2>
-          <p>Your assistant</p>
+          <p>Your Personal Intelligence Entity</p>
         </div>
       </div>
-
-      <button class="nav-link active" data-section="today">Home / Today</button>
-      <button class="nav-link" data-section="work">Work / Company</button>
-      <button class="nav-link" data-section="family">Family</button>
-      <button class="nav-link" data-section="home">Home</button>
-      <button class="nav-link" data-section="money">Money</button>
-      <button class="nav-link" data-section="health">Health</button>
-      <button class="nav-link" data-section="gdd">GDD</button>
-      <button class="nav-link" data-section="pie">Pie</button>
-
+      <div class="nav-group">
+        <button class="nav-link active" data-section="today"><span>🏠</span> Home / Today</button>
+        <button class="nav-link" data-section="work"><span>💼</span> Work / Company</button>
+        <button class="nav-link" data-section="family"><span>👨‍👩‍👧‍👦</span> Family</button>
+        <button class="nav-link" data-section="home"><span>🏡</span> Home</button>
+        <button class="nav-link" data-section="money"><span>💵</span> Money</button>
+        <button class="nav-link" data-section="health"><span>🤍</span> Health</button>
+        <button class="nav-link" data-section="gdd"><span>🌡️</span> GDD</button>
+        <button class="nav-link" data-section="pie"><span>🥧</span> Pie</button>
+      </div>
       <div class="nav-footer-card">
         <strong>Pie is here to help</strong>
         <p>Ask questions, get insights, and stay on track.</p>
       </div>
     </nav>
 
-    <!-- Overlay for mobile menu -->
-    <div id="menuOverlay" class="menu-overlay"></div>
-
-    <!-- Main Content -->
     <main class="main-content">
-
-      <!-- Today / Home -->
       <section id="todaySection" class="app-section active-section">
-        <section class="card schedule-preview-card">
+        <div class="screen-title"><p class="eyebrow">Home</p><h2>Today’s Snapshot</h2><p>Your day at a glance.</p></div>
+        <section class="card schedule-card">
           <div class="card-header">
-            <h2>GD Schedule</h2>
-            <button class="text-button">View full</button>
+            <div><p class="eyebrow dark">GD Schedule</p><h3>Upcoming</h3></div>
+            <button class="text-button" data-section-jump="work" data-work-jump="schedule">View full</button>
           </div>
-
-          <p class="helper-note">
-            Schedule capture will connect here later through CSV, manual entry, or screenshot intake.
-          </p>
-
-          <div class="date-strip">
-            <div>
-              <span>Mon</span>
-              <strong>12</strong>
-            </div>
-
-            <div>
-              <span>Tue</span>
-              <strong>13</strong>
-            </div>
-
-            <div class="selected-date">
-              <span>Wed</span>
-              <strong>14</strong>
-            </div>
-
-            <div>
-              <span>Thu</span>
-              <strong>15</strong>
-            </div>
-
-            <div>
-              <span>Fri</span>
-              <strong>16</strong>
-            </div>
+          <p class="helper-note">Schedule capture will connect here through CSV, manual entry, pasted schedule text, or screenshot intake.</p>
+          <div class="date-strip" aria-label="Week preview">
+            <div><span>Mon</span><strong>12</strong></div>
+            <div><span>Tue</span><strong>13</strong></div>
+            <div class="selected-date"><span>Wed</span><strong>14</strong></div>
+            <div><span>Thu</span><strong>15</strong></div>
+            <div><span>Fri</span><strong>16</strong></div>
           </div>
         </section>
 
         <section class="card pie-card">
           <div class="pie-card-header">
-            <div class="pie-avatar-small">🥧</div>
-
-            <div>
-              <h2>Pie</h2>
-              <p>Here’s your snapshot for today.</p>
-            </div>
+            <div class="pie-orb">🥧</div>
+            <div><h3>Pie</h3><p>Here’s your snapshot for today.</p></div>
           </div>
-
           <section class="snapshot-panel">
-            <div class="snapshot-header">
-              <h2>Today’s Snapshot</h2>
-              <span>⌃</span>
-            </div>
-
+            <div class="snapshot-header"><h3>Today’s Snapshot</h3><span>⌃</span></div>
             <div class="snapshot-block">
-              <h3>Work</h3>
-
+              <div class="block-title"><span>💼</span><h4>Work</h4></div>
               <ul class="value-list">
                 <li><strong>Jobs:</strong> <span id="todayJobCount">0</span></li>
                 <li><strong>Start:</strong> <span id="todayStartTime">Not set</span></li>
                 <li><strong>End:</strong> <span id="todayEndTime">Not set</span></li>
                 <li><strong>Job types:</strong> <span id="todayJobTypes">None yet</span></li>
               </ul>
+              <div class="chip-row" id="todayJobTypeChips"><span class="chip muted">No jobs imported</span></div>
             </div>
-
             <div class="snapshot-block">
-              <h3>Family</h3>
-
+              <div class="block-title"><span>👨‍👩‍👧‍👦</span><h4>Family</h4></div>
               <ul class="value-list">
                 <li>Important events will appear here.</li>
+                <li>Family notes can be tied to each day.</li>
               </ul>
-
-              <div class="note-strip">
-                Note to self: Add family notes relevant to today.
-              </div>
+              <div class="note-strip">Note to self: Add family notes relevant to today.</div>
             </div>
-
             <div class="snapshot-block">
-              <h3>Health</h3>
-
-              <label class="check-row">
-                <input type="checkbox" />
-                <span>1/2 gal water</span>
-              </label>
-
-              <label class="check-row">
-                <input type="checkbox" />
-                <span>Brush teeth morning</span>
-              </label>
-
-              <label class="check-row">
-                <input type="checkbox" />
-                <span>Stretch</span>
-              </label>
-
+              <div class="block-title"><span>🤍</span><h4>Health</h4></div>
+              <label class="check-row"><input type="checkbox" /><span>1/2 gal water</span></label>
+              <label class="check-row"><input type="checkbox" /><span>Brush teeth morning</span></label>
+              <label class="check-row"><input type="checkbox" /><span>Stretch</span></label>
               <label class="field-label" for="healthNotes">Notes</label>
               <textarea id="healthNotes" placeholder="Add a note..."></textarea>
             </div>
@@ -185,256 +100,82 @@
         </section>
       </section>
 
-      <!-- Work / Company -->
-      <!-- Work / Company -->
-<section id="workSection" class="app-section">
+      <section id="workSection" class="app-section">
+        <div class="screen-title"><p class="eyebrow">Operations</p><h2>Work / Company</h2><p>Jobs, routes, spending, inventory, insights, and schedule planning.</p></div>
+        <section class="work-layout">
+          <nav class="work-subnav" aria-label="Work and company navigation">
+            <button class="work-tab active" data-work-tab="dashboard">Dashboard</button>
+            <button class="work-tab" data-work-tab="schedule">Schedule / Upcoming</button>
+            <button class="work-tab" data-work-tab="spending">Spending / Costs</button>
+            <button class="work-tab" data-work-tab="notes">Notes</button>
+            <button class="work-tab" data-work-tab="insights">Insights</button>
+            <button class="work-tab" data-work-tab="inventory">Inventory</button>
+          </nav>
+          <div class="work-content">
+            <section id="workDashboardPanel" class="work-panel active-work-panel">
+              <section class="card">
+                <div class="card-header">
+                  <div><p class="eyebrow dark">Overview</p><h3>Jobs Completed Today</h3></div>
+                  <span class="status-pill">Transition Mode</span>
+                </div>
+                <div class="metric-row">
+                  <div class="metric-card"><span class="metric-label">Completed</span><strong id="jobsCompletedToday">0</strong><small>jobs</small></div>
+                  <div class="metric-card"><span class="metric-label">Upcoming</span><strong id="jobsUpcomingToday">0</strong><small>jobs</small></div>
+                </div>
+                <p class="helper-note">This dashboard will calculate from imported schedule data once Schedule Intake is connected.</p>
+              </section>
+              <section class="card">
+                <div class="card-header"><div><p class="eyebrow dark">Weekly</p><h3>Jobs Upcoming</h3></div></div>
+                <ul class="value-list">
+                  <li><strong>Mosquito:</strong> <span id="mosquitoUpcoming">0</span></li>
+                  <li><strong>General Pest:</strong> <span id="generalPestUpcoming">0</span></li>
+                  <li><strong>Quarterly:</strong> <span id="quarterlyUpcoming">0</span></li>
+                  <li><strong>Rodent:</strong> <span id="rodentUpcoming">0</span></li>
+                </ul>
+                <div class="mini-chart" aria-hidden="true"><span style="--value: 40%"></span><span style="--value: 30%"></span><span style="--value: 20%"></span><span style="--value: 10%"></span></div>
+              </section>
+              <section class="card pie-advice-card">
+                <div class="pie-card-header">
+                  <div class="pie-orb">🥧</div>
+                  <div><h3>Pie Advice</h3><p id="workPieAdvice">Once your schedule is imported, I’ll help predict products, time, workload, and route needs.</p></div>
+                </div>
+              </section>
+            </section>
 
-  <section class="section-header-card">
-    <h2>Work / Company</h2>
-    <p>Jobs, routes, spending, inventory, insights, and schedule planning.</p>
-  </section>
+            <section id="workSchedulePanel" class="work-panel">
+              <section class="card">
+                <p class="eyebrow dark">Bridge</p><h3>Schedule Intake</h3>
+                <p>This is where CSV import, manual quick add, pasted schedule text, and screenshot intake will live.</p>
+                <div class="action-stack"><button class="primary-button">Upload CSV</button><button class="secondary-button">Manual Quick Add</button><button class="secondary-button">Paste Schedule Text</button></div>
+              </section>
+              <section class="card"><h3>Upcoming Services</h3><div id="upcomingServicesList" class="empty-state"><strong>No services imported yet.</strong><p>Import a schedule and Pie will summarize tomorrow and this week.</p></div></section>
+            </section>
 
-  <section class="work-layout">
+            <section id="workSpendingPanel" class="work-panel">
+              <section class="card"><p class="eyebrow dark">Costs</p><h3>Fuel</h3><ul class="value-list"><li><strong>This week:</strong> $0</li><li><strong>This month:</strong> $0</li></ul></section>
+              <section class="card">
+                <p class="eyebrow dark">Product Monthly</p><h3>Product Usage</h3>
+                <div class="snapshot-block"><h4>Exterior</h4><ul class="value-list"><li>CrossCheck Plus usage will appear here.</li><li>Exterior material cost trends will appear here.</li></ul></div>
+                <div class="snapshot-block"><h4>Interior</h4><ul class="value-list"><li>Interior product usage will appear here.</li><li>Interior cost patterns will appear here.</li></ul></div>
+              </section>
+              <section class="card pie-advice-card"><div class="pie-card-header"><div class="pie-orb">🥧</div><div><h3>Pie Advice</h3><p>I’ll compare spending patterns after you begin logging fuel and product costs.</p></div></div></section>
+            </section>
 
-    <!-- Work Sub Menu -->
-    <!-- Work Sub Menu -->
-<nav class="work-subnav" aria-label="Work and company navigation">
-  <button class="work-tab active" onclick="showWorkPanel('dashboard')">Dashboard</button>
-  <button class="work-tab" onclick="showWorkPanel('schedule')">Schedule / Upcoming</button>
-  <button class="work-tab" onclick="showWorkPanel('spending')">Spending / Costs</button>
-  <button class="work-tab" onclick="showWorkPanel('notes')">Notes</button>
-  <button class="work-tab" onclick="showWorkPanel('insights')">Insights</button>
-  <button class="work-tab" onclick="showWorkPanel('inventory')">Inventory</button>
-</nav>
-    <!-- Work Dashboard -->
-    <section id="workDashboardPanel" class="work-panel active-work-panel">
-
-      <section class="card">
-        <h3>Jobs Completed Today</h3>
-
-        <div class="metric-row">
-          <div>
-            <span class="metric-label">Completed</span>
-            <strong id="jobsCompletedToday" class="metric-number">0</strong>
-          </div>
-
-          <div>
-            <span class="metric-label">Upcoming</span>
-            <strong id="jobsUpcomingToday" class="metric-number">0</strong>
-          </div>
-        </div>
-
-        <p class="helper-note">
-          This will calculate from imported schedule data once Schedule Intake is connected.
-        </p>
-      </section>
-
-      <section class="card">
-        <h3>Weekly Jobs Upcoming</h3>
-
-        <ul class="value-list">
-          <li><strong>Mosquito:</strong> <span id="mosquitoUpcoming">0</span></li>
-          <li><strong>General Pest:</strong> <span id="generalPestUpcoming">0</span></li>
-          <li><strong>Quarterly:</strong> <span id="quarterlyUpcoming">0</span></li>
-          <li><strong>Rodent:</strong> <span id="rodentUpcoming">0</span></li>
-        </ul>
-      </section>
-
-      <section class="card pie-advice-card">
-        <div class="pie-card-header">
-          <div class="pie-avatar-small">🥧</div>
-
-          <div>
-            <h3>Pie Advice</h3>
-            <p id="workPieAdvice">
-              Once your schedule is imported, I’ll help predict products, time, workload, and route needs.
-            </p>
-          </div>
-        </div>
-      </section>
-
-    </section>
-
-    <!-- Schedule / Upcoming -->
-    <section id="workSchedulePanel" class="work-panel">
-
-      <section class="card">
-        <h3>Schedule Intake</h3>
-
-        <p>
-          This is where CSV import, manual quick add, pasted schedule text, and screenshot intake will live.
-        </p>
-
-        <button class="primary-button">
-          Add Schedule Intake Tool
-        </button>
-      </section>
-
-      <section class="card">
-        <h3>Upcoming Services</h3>
-
-        <div id="upcomingServicesList">
-          <p>No services imported yet.</p>
-        </div>
-      </section>
-
-    </section>
-
-    <!-- Spending / Costs -->
-    <section id="workSpendingPanel" class="work-panel">
-
-      <section class="card">
-        <h3>Fuel</h3>
-
-        <ul class="value-list">
-          <li><strong>This week:</strong> $0</li>
-          <li><strong>This month:</strong> $0</li>
-        </ul>
-      </section>
-
-      <section class="card">
-        <h3>Product Monthly</h3>
-
-        <div class="snapshot-block">
-          <h3>Exterior</h3>
-          <ul class="value-list">
-            <li>CrossCheck Plus usage will appear here.</li>
-          </ul>
-        </div>
-
-        <div class="snapshot-block">
-          <h3>Interior</h3>
-          <ul class="value-list">
-            <li>Interior product usage will appear here.</li>
-          </ul>
-        </div>
-      </section>
-
-      <section class="card pie-advice-card">
-        <div class="pie-card-header">
-          <div class="pie-avatar-small">🥧</div>
-
-          <div>
-            <h3>Pie Advice</h3>
-            <p>
-              I’ll compare spending patterns after you begin logging fuel and product costs.
-            </p>
-          </div>
-        </div>
-      </section>
-
-    </section>
-
-    <!-- Notes -->
-    <section id="workNotesPanel" class="work-panel">
-
-      <section class="card">
-        <h3>Work Notes</h3>
-
-        <label class="field-label" for="workNotes">Notes</label>
-        <textarea id="workNotes" placeholder="Add work or company notes..."></textarea>
-      </section>
-
-    </section>
-
-    <!-- Insights -->
-    <section id="workInsightsPanel" class="work-panel">
-
-      <section class="card">
-        <h3>Insights</h3>
-
-        <ul class="value-list">
-          <li>Route insights will appear here.</li>
-          <li>Product trends will appear here.</li>
-          <li>Service timing patterns will appear here.</li>
-        </ul>
-      </section>
-
-    </section>
-
-    <!-- Inventory -->
-    <section id="workInventoryPanel" class="work-panel">
-
-      <section class="card">
-        <h3>Inventory</h3>
-
-        <ul class="value-list">
-          <li>Products on hand will appear here.</li>
-          <li>Products needed will appear here.</li>
-          <li>Restock alerts will appear here.</li>
-        </ul>
-      </section>
-
-    </section>
-
-  </section>
-</section>
-
-      <!-- Family -->
-      <section id="familySection" class="app-section">
-        <section class="section-header-card">
-          <h2>Family</h2>
-          <p>Important events, reminders, notes, and family planning.</p>
-        </section>
-      </section>
-
-      <!-- Home -->
-      <section id="homeSection" class="app-section">
-        <section class="section-header-card">
-          <h2>Home</h2>
-          <p>Chores, house projects, routines, and home notes.</p>
-        </section>
-      </section>
-
-      <!-- Money -->
-      <section id="moneySection" class="app-section">
-        <section class="section-header-card">
-          <h2>Money</h2>
-          <p>Budgeting, spending, bills, and financial planning.</p>
-        </section>
-      </section>
-
-      <!-- Health -->
-      <section id="healthSection" class="app-section">
-        <section class="section-header-card">
-          <h2>Health</h2>
-          <p>Daily health checklist, routines, notes, and goals.</p>
-        </section>
-      </section>
-
-      <!-- GDD -->
-      <section id="gddSection" class="app-section">
-        <section class="section-header-card">
-          <h2>GDD</h2>
-          <p>Growing degree day tools and pest timing intelligence.</p>
-        </section>
-      </section>
-
-      <!-- Pie -->
-      <section id="pieSection" class="app-section">
-        <section class="section-header-card">
-          <h2>Pie</h2>
-          <p>Personal Intelligence Entity. The main operating interface for the ecosystem.</p>
-        </section>
-
-        <section class="card">
-          <label class="field-label" for="pieInput">Ask Pie</label>
-          <input id="pieInput" type="text" placeholder="Ask Pie about today..." />
-
-          <button id="askPieButton" class="primary-button">
-            Ask Pie
-          </button>
-
-          <div id="pieResponse" class="pie-response">
-            Pie is awake.
+            <section id="workNotesPanel" class="work-panel"><section class="card"><p class="eyebrow dark">Notes</p><h3>Work Notes</h3><label class="field-label" for="workNotes">Notes</label><textarea id="workNotes" placeholder="Add work or company notes..."></textarea></section></section>
+            <section id="workInsightsPanel" class="work-panel"><section class="card"><p class="eyebrow dark">Knowledge</p><h3>Insights</h3><ul class="value-list"><li>Route insights will appear here.</li><li>Product trends will appear here.</li><li>Service timing patterns will appear here.</li></ul></section></section>
+            <section id="workInventoryPanel" class="work-panel"><section class="card"><p class="eyebrow dark">Inventory</p><h3>Products On Hand</h3><ul class="value-list"><li>Products on hand will appear here.</li><li>Products needed will appear here.</li><li>Restock alerts will appear here.</li></ul></section></section>
           </div>
         </section>
       </section>
 
+      <section id="familySection" class="app-section"><div class="screen-title"><p class="eyebrow">Life</p><h2>Family</h2><p>Important events, notes, and family planning.</p></div><section class="card"><h3>Family Module</h3><p>Calendar, reminders, and family notes will live here.</p></section></section>
+      <section id="homeSection" class="app-section"><div class="screen-title"><p class="eyebrow">Life</p><h2>Home</h2><p>Chores, projects, routines, and home notes.</p></div><section class="card"><h3>Home Module</h3><p>House workflows and maintenance reminders will live here.</p></section></section>
+      <section id="moneySection" class="app-section"><div class="screen-title"><p class="eyebrow">Life</p><h2>Money</h2><p>Budgeting, bills, spending, and financial planning.</p></div><section class="card"><h3>Money Module</h3><p>Budgets and spending snapshots will live here.</p></section></section>
+      <section id="healthSection" class="app-section"><div class="screen-title"><p class="eyebrow">Life</p><h2>Health</h2><p>Daily routines, goals, and notes.</p></div><section class="card"><h3>Health Module</h3><p>We’ll expand the checklist pattern here.</p></section></section>
+      <section id="gddSection" class="app-section"><div class="screen-title"><p class="eyebrow">Pest Timing</p><h2>GDD</h2><p>Growing degree day tools and pest timing intelligence.</p></div><section class="card"><h3>GDD Module</h3><p>Weather and pest timing data will connect here later.</p></section></section>
+      <section id="pieSection" class="app-section"><div class="screen-title"><p class="eyebrow">Assistant</p><h2>Pie</h2><p>The primary operating interface for the ecosystem.</p></div><section class="card"><label class="field-label" for="pieInput">Ask Pie</label><input id="pieInput" type="text" placeholder="Ask Pie about today..." /><button id="askPieButton" class="primary-button">Ask Pie</button><div id="pieResponse" class="pie-response">Pie is awake.</div></section></section>
     </main>
   </div>
-
-  <script type="module" src="./ecosystem.js?v=6"></script>
-  
+  <script src="./ecosystem.js?v=8"></script>
 </body>
 </html>
